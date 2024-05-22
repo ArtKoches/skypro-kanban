@@ -1,6 +1,7 @@
-import CalendarComponent from '../utils/Calendar'
+import PopNewCardForm from '../forms/PopNewCardForm'
+import Calendar from '../Calendar/Calendar'
 
-function PopNewCardComponent() {
+function PopNewCard() {
     return (
         <div className="pop-new-card" id="popNewCard">
             <div className="pop-new-card__container">
@@ -11,45 +12,8 @@ function PopNewCardComponent() {
                             ✖
                         </a>
                         <div className="pop-new-card__wrap">
-                            <form
-                                className="pop-new-card__form form-new"
-                                id="formNewCard"
-                                action="#"
-                            >
-                                <div className="form-new__block">
-                                    <label
-                                        htmlFor="formTitle"
-                                        className="subttl"
-                                    >
-                                        Название задачи
-                                    </label>
-                                    <input
-                                        className="form-new__input"
-                                        type="text"
-                                        name="name"
-                                        id="formTitle"
-                                        placeholder="Введите название задачи..."
-                                        autoFocus
-                                    />
-                                </div>
-                                <div className="form-new__block">
-                                    <label
-                                        htmlFor="textArea"
-                                        className="subttl"
-                                    >
-                                        Описание задачи
-                                    </label>
-                                    <textarea
-                                        className="form-new__area"
-                                        name="text"
-                                        id="textArea"
-                                        placeholder="Введите описание задачи..."
-                                        defaultValue={''}
-                                    />
-                                </div>
-                            </form>
-
-                            <CalendarComponent />
+                            <PopNewCardForm />
+                            <Calendar />
                         </div>
                         <div className="pop-new-card__categories categories">
                             <p className="categories__p subttl">Категория</p>
@@ -78,4 +42,4 @@ function PopNewCardComponent() {
     )
 }
 
-export default PopNewCardComponent
+export default PopNewCard

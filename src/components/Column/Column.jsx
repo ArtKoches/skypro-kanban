@@ -1,15 +1,15 @@
-import CardComponent from './Cards'
+import Card from '../Cards/Cards'
 
-function ColumnComponent() {
+function Column() {
     return (
         <div className="main__column column">
             <div className="column__title">
                 <p>Без статуса</p>
             </div>
 
-            <CardComponent />
+            <Card />
         </div>
     )
 }
 
-export default ColumnComponent
+export default Column

@@ -1,26 +1,20 @@
 import './App.css'
-import MainComponent from './components/pages/Main/Main'
-import HeaderComponent from './components/Header/Header'
-import PopBrowseComponent from './components/popups/PopBrowse'
-import PopNewCardComponent from './components/popups/PopNewCard'
-import PopExitComponent from './components/popups/PopExit'
+import PopExit from './components/popups/PopExit'
+import PopNewCard from './components/popups/PopNewCard'
+import PopBrowse from './components/popups/PopBrowse'
+import Header from './components/Header/Header'
+import Main from './components/Main/Main'
 
 function App() {
     return (
         <div className="wrapper">
             {/* pop-up start*/}
-
-            <PopExitComponent />
-
-            <PopNewCardComponent />
-
-            <PopBrowseComponent />
-
+            <PopExit />
+            <PopNewCard />
+            <PopBrowse />
             {/* pop-up end*/}
-
-            <HeaderComponent />
-
-            <MainComponent />
+            <Header />
+            <Main />
         </div>
     )
 }

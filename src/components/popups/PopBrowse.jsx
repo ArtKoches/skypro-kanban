@@ -1,6 +1,7 @@
-import CalendarComponent from '../utils/Calendar'
+import PopBrowseForm from '../forms/PopBrowseForm'
+import Calendar from '../Calendar/Calendar'
 
-function PopBrowseComponent() {
+function PopBrowse() {
     return (
         <div className="pop-browse" id="popBrowse">
             <div className="pop-browse__container">
@@ -33,30 +34,8 @@ function PopBrowseComponent() {
                             </div>
                         </div>
                         <div className="pop-browse__wrap">
-                            <form
-                                className="pop-browse__form form-browse"
-                                id="formBrowseCard"
-                                action="#"
-                            >
-                                <div className="form-browse__block">
-                                    <label
-                                        htmlFor="textArea01"
-                                        className="subttl"
-                                    >
-                                        Описание задачи
-                                    </label>
-                                    <textarea
-                                        className="form-browse__area"
-                                        name="text"
-                                        id="textArea01"
-                                        readOnly
-                                        placeholder="Введите описание задачи..."
-                                        defaultValue={''}
-                                    />
-                                </div>
-                            </form>
-
-                            <CalendarComponent />
+                            <PopBrowseForm />
+                            <Calendar />
                         </div>
                         <div className="theme-down__categories theme-down">
                             <p className="categories__p subttl">Категория</p>
@@ -103,4 +82,4 @@ function PopBrowseComponent() {
     )
 }
 
-export default PopBrowseComponent
+export default PopBrowse

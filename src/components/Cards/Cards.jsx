@@ -1,4 +1,4 @@
-function CardComponent() {
+function Card() {
     return (
         <div className="cards">
             <div className="cards__item">
@@ -61,4 +61,4 @@ function CardComponent() {
     )
 }
 
-export default CardComponent
+export default Card
