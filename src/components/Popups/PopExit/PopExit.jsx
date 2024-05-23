@@ -1,4 +1,4 @@
-import PopExitForm from '../forms/PopExitForm'
+import PopExitForm from './PopExitForm'
 
 function PopExit() {
     return (

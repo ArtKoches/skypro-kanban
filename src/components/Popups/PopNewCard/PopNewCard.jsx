@@ -1,5 +1,5 @@
-import PopNewCardForm from '../forms/PopNewCardForm'
-import Calendar from '../Calendar/Calendar'
+import PopNewCardForm from './PopNewCardForm'
+import Calendar from '../../Calendar/Calendar'
 
 function PopNewCard() {
     return (

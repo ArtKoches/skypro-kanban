@@ -1,5 +1,5 @@
-import PopBrowseForm from '../forms/PopBrowseForm'
-import Calendar from '../Calendar/Calendar'
+import PopBrowseForm from './PopBrowseForm'
+import Calendar from '../../Calendar/Calendar'
 
 function PopBrowse() {
     return (
