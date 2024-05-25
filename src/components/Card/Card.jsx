@@ -1,12 +1,15 @@
-function Card() {
+import { topicColors } from '../../data'
+
+function Card({ topic, title, date }) {
     return (
         <div className="cards">
             <div className="cards__item">
                 <div className="cards__card card">
                     <div className="card__group">
-                        <div className="card__theme _orange">
-                            <p className="_orange">Web Design</p>
+                        <div className={`card__theme ${topicColors[topic]}`}>
+                            <p className={`${topicColors[topic]}`}>{topic}</p>
                         </div>
+
                         <a href="#popBrowse" target="_self">
                             <div className="card__btn">
                                 <div />
@@ -15,10 +18,12 @@ function Card() {
                             </div>
                         </a>
                     </div>
+
                     <div className="card__content">
                         <a target="_blank">
-                            <h3 className="card__title">Название задачи</h3>
+                            <h3 className="card__title">{title}</h3>
                         </a>
+
                         <div className="card__date">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +57,7 @@ function Card() {
                                     </clipPath>
                                 </defs>
                             </svg>
-                            <p>30.10.23</p>
+                            <p>{date}</p>
                         </div>
                     </div>
                 </div>

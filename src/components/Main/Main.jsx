@@ -1,3 +1,4 @@
+import { cardList, statusList } from '../../data'
 import Column from '../Column/Column'
 
 function Main() {
@@ -6,11 +7,15 @@ function Main() {
             <div className="container">
                 <div className="main__block">
                     <div className="main__content">
-                        <Column />
-                        <Column />
-                        <Column />
-                        <Column />
-                        <Column />
+                        {statusList.map(status => (
+                            <Column
+                                key={status}
+                                title={status}
+                                cardList={cardList.filter(
+                                    card => card.status === status,
+                                )}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
