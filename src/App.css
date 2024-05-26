@@ -1100,3 +1100,8 @@ body {
         display: block;
     }
 }
+
+.preloader {
+    background: url('../public/preloader.gif') no-repeat center;
+    height: 100vh;
+}
