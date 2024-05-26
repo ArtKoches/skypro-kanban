@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import PopUser from '../Popups/PopUser/PopUser'
 
-function HeaderNav() {
+function HeaderNav({ onCardAdd }) {
     const [isOpen, setIsOpen] = useState(false)
-
     const toggleDropdownUserInfo = () => setIsOpen(prevState => !prevState)
 
     return (
         <nav className="header__nav">
-            <button className="header__btn-main-new _hover01" id="btnMainNew">
+            <button
+                className="header__btn-main-new _hover01"
+                id="btnMainNew"
+                onClick={onCardAdd}
+            >
                 <a href="#popNewCard">Создать новую задачу</a>
             </button>
 

@@ -1,6 +1,6 @@
 import HeaderNav from './HeaderNav'
 
-function Header() {
+function Header({ onCardAdd }) {
     return (
         <header className="header">
             <div className="container">
@@ -10,12 +10,14 @@ function Header() {
                             <img src="/logo.png" alt="logo" />
                         </a>
                     </div>
+
                     <div className="header__logo _dark">
                         <a target="_self">
                             <img src="/logo_dark.png" alt="logo" />
                         </a>
                     </div>
-                    <HeaderNav />
+
+                    <HeaderNav onCardAdd={onCardAdd} />
                 </div>
             </div>
         </header>
