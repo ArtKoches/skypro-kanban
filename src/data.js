@@ -43,9 +43,3 @@ export const statusList = [
     'Тестирование',
     'Готово',
 ]
-
-export const topicColors = {
-    'Web Design': '_orange',
-    Copywriting: '_purple',
-    Research: '_green',
-}

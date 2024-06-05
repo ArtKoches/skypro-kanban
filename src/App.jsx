@@ -1,6 +1,8 @@
 import './App.css'
 import { useEffect, useState } from 'react'
 import { cardList } from './data'
+import { GlobalStyle } from './Styles/Global.styled'
+import { Wrapper } from './Styles/Common.styled'
 
 import Loading from './components/Loading/Loading'
 import PopExit from './components/Popups/PopExit/PopExit'
@@ -37,17 +39,19 @@ function App() {
     }, [isLoading])
 
     return (
-        <div className="wrapper">
-            {/* pop-up start*/}
-            <PopExit />
-            <PopNewCard />
-            <PopBrowse />
-            {/* pop-up end*/}
+        <>
+            <GlobalStyle />
+            <Wrapper>
+                {/* pop-up start*/}
+                <PopExit />
+                <PopNewCard />
+                <PopBrowse />
+                {/* pop-up end*/}
 
-            <Header onCardAdd={onCardAdd} />
-
-            {isLoading ? <Loading /> : <Main cards={cards} />}
-        </div>
+                <Header onCardAdd={onCardAdd} />
+                {isLoading ? <Loading /> : <Main cards={cards} />}
+            </Wrapper>
+        </>
     )
 }
 

@@ -1,5 +1,11 @@
+import * as S from '../../Styles/Loading.styled'
+
 function Loading() {
-    return <div className="preloader"></div>
+    return (
+        <>
+            <S.Preloader></S.Preloader>
+        </>
+    )
 }
 
 export default Loading

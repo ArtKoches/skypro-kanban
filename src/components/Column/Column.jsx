@@ -1,11 +1,12 @@
+import * as S from '../../Styles/Column.styled'
 import Card from '../Card/Card'
 
 function Column({ title, cardList }) {
     return (
-        <div className="main__column column">
-            <div className="column__title">
+        <S.Column>
+            <S.ColumnTitle>
                 <p>{title}</p>
-            </div>
+            </S.ColumnTitle>
 
             {cardList.map(task => (
                 <Card
@@ -15,7 +16,7 @@ function Column({ title, cardList }) {
                     date={task.date}
                 />
             ))}
-        </div>
+        </S.Column>
     )
 }
 
