@@ -1102,6 +1102,6 @@ body {
 }
 
 .preloader {
-    background: url('./preloader.gif') no-repeat center;
+    background: url('/public/images/preloader.gif') no-repeat center;
     height: 100vh;
 }

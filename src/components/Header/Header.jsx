@@ -7,13 +7,13 @@ function Header({ onCardAdd }) {
                 <div className="header__block">
                     <div className="header__logo _show _light">
                         <a target="_self">
-                            <img src="/logo.png" alt="logo" />
+                            <img src="/public/images/logo.png" alt="logo" />
                         </a>
                     </div>
 
                     <div className="header__logo _dark">
                         <a target="_self">
-                            <img src="/logo_dark.png" alt="logo" />
+                            <img src="/public/images/logo_dark.png" alt="logo" />
                         </a>
                     </div>
 
