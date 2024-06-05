@@ -1,3 +1,4 @@
+import * as S from '../../Styles/Header.styled'
 import { useState } from 'react'
 import PopUser from '../Popups/PopUser/PopUser'
 
@@ -6,25 +7,17 @@ function HeaderNav({ onCardAdd }) {
     const toggleDropdownUserInfo = () => setIsOpen(prevState => !prevState)
 
     return (
-        <nav className="header__nav">
-            <button
-                className="header__btn-main-new _hover01"
-                id="btnMainNew"
-                onClick={onCardAdd}
-            >
+        <S.HeaderNav>
+            <S.HeaderMainBtn id="btnMainNew" onClick={onCardAdd}>
                 <a href="#popNewCard">Создать новую задачу</a>
-            </button>
+            </S.HeaderMainBtn>
 
-            <a
-                // href="#user-set-target"
-                onClick={toggleDropdownUserInfo}
-                className="header__user _hover02"
-            >
+            <S.HeaderUser onClick={toggleDropdownUserInfo}>
                 Ivan Ivanov
-            </a>
+            </S.HeaderUser>
 
             {isOpen && <PopUser />}
-        </nav>
+        </S.HeaderNav>
     )
 }
 

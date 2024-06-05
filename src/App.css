@@ -722,7 +722,7 @@ body {
     display: none;
 }
 
-.header {
+/* .header {
     width: 100%;
     margin: 0 auto;
     background-color: #ffffff;
@@ -784,7 +784,7 @@ body {
     transform: rotate(-45deg);
     margin: -6px 0 0 5px;
     padding: 0;
-}
+} */
 .header__pop-user-set {
     display: block;
     position: absolute;
