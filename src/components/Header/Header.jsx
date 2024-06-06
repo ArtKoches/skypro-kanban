@@ -13,11 +13,11 @@ function Header({ onCardAdd }) {
                         </a>
                     </S.HeaderLogo>
 
-                    <S.HeaderLogo>
+                    {/* <S.HeaderLogo>
                         <a target="_self">
                             <img src="/images/logo_dark.png" alt="logo" />
                         </a>
-                    </S.HeaderLogo>
+                    </S.HeaderLogo> */}
 
                     <HeaderNav onCardAdd={onCardAdd} />
                 </S.HeaderBlock>

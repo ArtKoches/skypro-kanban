@@ -1,15 +1,19 @@
+import * as S from '../../../Styles/PopExit.styled'
+import { Button } from '/src/Styles/Common.styled.js'
+
 function PopExitForm() {
     return (
-        <form className="pop-exit__form" id="formExit" action="#">
-            <div className="pop-exit__form-group">
-                <button className="pop-exit__exit-yes _hover01" id="exitYes">
+        <S.PopExitForm id="formExit" action="#">
+            <S.PopExitFormGroup>
+                <Button $exit id="exitYes">
                     <a href="modal/signin.html">Да, выйти</a>{' '}
-                </button>
-                <button className="pop-exit__exit-no _hover03" id="exitNo">
+                </Button>
+
+                <Button id="exitNo">
                     <a href="main.html">Нет, остаться</a>{' '}
-                </button>
-            </div>
-        </form>
+                </Button>
+            </S.PopExitFormGroup>
+        </S.PopExitForm>
     )
 }
 

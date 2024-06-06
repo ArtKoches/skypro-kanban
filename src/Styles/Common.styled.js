@@ -48,3 +48,33 @@ export const PopTarget = css`
         display: block;
     }
 `
+
+export const Button = styled.button`
+    width: 153px;
+    height: 30px;
+    background-color: ${props => (props.$exit ? '#565eef' : 'transparent')};
+    border-radius: 4px;
+    border: ${props =>
+        props.$exit ? 'none' : '0.7px solid var(--palette-navy-60, #565eef)'};
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 500;
+    letter-spacing: -0.14px;
+    color: #ffffff;
+    margin-right: ${props => (props.$exit ? '10px' : '0')};
+
+    a {
+        width: 100%;
+        height: 100%;
+        color: ${props => (props.$exit ? '#ffffff' : '#565eef')};
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    ${props => (props.$exit ? Hover01 : Hover03)}
+`

@@ -1,18 +1,19 @@
+import * as S from '../../../Styles/PopExit.styled'
 import PopExitForm from './PopExitForm'
 
 function PopExit() {
     return (
-        <div className="pop-exit" id="popExit">
-            <div className="pop-exit__container">
-                <div className="pop-exit__block">
-                    <div className="pop-exit__ttl">
+        <S.PopExit id="popExit">
+            <S.PopExitContainer>
+                <S.PopExitBlock>
+                    <S.PopExitTitle>
                         <h2>Выйти из аккаунта?</h2>
-                    </div>
+                    </S.PopExitTitle>
 
                     <PopExitForm />
-                </div>
-            </div>
-        </div>
+                </S.PopExitBlock>
+            </S.PopExitContainer>
+        </S.PopExit>
     )
 }
 
