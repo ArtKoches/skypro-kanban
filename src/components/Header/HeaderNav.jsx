@@ -8,9 +8,9 @@ function HeaderNav({ onCardAdd }) {
 
     return (
         <S.HeaderNav>
-            <S.HeaderMainBtn id="btnMainNew" onClick={onCardAdd}>
+            <S.HeaderCreateBtn id="btnMainNew" onClick={onCardAdd}>
                 <a href="#popNewCard">Создать новую задачу</a>
-            </S.HeaderMainBtn>
+            </S.HeaderCreateBtn>
 
             <S.HeaderUser onClick={toggleDropdownUserInfo}>
                 Ivan Ivanov

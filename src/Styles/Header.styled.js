@@ -33,7 +33,7 @@ export const HeaderNav = styled.nav`
     justify-content: center;
 `
 
-export const HeaderMainBtn = styled.button`
+export const HeaderCreateBtn = styled.button`
     width: 178px;
     height: 30px;
     border-radius: 4px;

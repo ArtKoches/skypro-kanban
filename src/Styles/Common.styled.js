@@ -31,3 +31,20 @@ export const Hover02 = css`
         border-bottom-color: #33399b;
     }
 `
+
+export const Hover03 = css`
+    &:hover {
+        background-color: #33399b;
+        color: #ffffff;
+    }
+
+    &:hover a {
+        color: #ffffff;
+    }
+`
+
+export const PopTarget = css`
+    &:target {
+        display: block;
+    }
+`

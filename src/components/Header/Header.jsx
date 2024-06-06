@@ -9,16 +9,13 @@ function Header({ onCardAdd }) {
                 <S.HeaderBlock>
                     <S.HeaderLogo>
                         <a target="_self">
-                            <img src="/public/images/logo.png" alt="logo" />
+                            <img src="/images/logo.png" alt="logo" />
                         </a>
                     </S.HeaderLogo>
 
                     <S.HeaderLogo>
                         <a target="_self">
-                            <img
-                                src="/public/images/logo_dark.png"
-                                alt="logo"
-                            />
+                            <img src="/images/logo_dark.png" alt="logo" />
                         </a>
                     </S.HeaderLogo>
 
