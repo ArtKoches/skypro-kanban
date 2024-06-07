@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components'
+import { breakpoints } from '../lib/breakpoints'
 
 export const Wrapper = styled.div`
     max-width: 100%;
@@ -77,4 +78,11 @@ export const Button = styled.button`
     }
 
     ${props => (props.$exit ? Hover01 : Hover03)}
+
+    @media only screen and (max-width: ${breakpoints.sm}px) {
+        width: 100%;
+        height: 40px;
+        margin-right: ${props => (props.$exit ? 0 : '')};
+        margin-bottom: ${props => (props.$exit ? '10px' : '')};
+    }
 `

@@ -1,3 +1,4 @@
+import { breakpoints } from '../lib/breakpoints'
 import { PopTarget } from './Common.styled'
 import styled from 'styled-components'
 
@@ -37,6 +38,10 @@ export const PopExitBlock = styled.div`
     border-radius: 10px;
     border: 0.7px solid #d4dbe5;
     box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
+
+    @media only screen and (max-width: ${breakpoints.sm}px) {
+        padding: 50px 20px;
+    }
 `
 
 export const PopExitTitle = styled.div`
@@ -57,4 +62,8 @@ export const PopExitFormGroup = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media only screen and (max-width: ${breakpoints.sm}px) {
+        display: block;
+    }
 `

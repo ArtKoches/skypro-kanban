@@ -1083,7 +1083,7 @@ body {
         height: 37px;
     }
 }
-@media only screen and (max-width: 375px) {
+/* @media only screen and (max-width: 375px) {
     .pop-exit__block {
         padding: 50px 20px;
     }
@@ -1100,4 +1100,4 @@ body {
     .pop-exit__form-group {
         display: block;
     }
-}
+} */
