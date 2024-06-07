@@ -918,7 +918,7 @@ body {
     letter-spacing: 0.2px;
 } */
 
-@media screen and (max-width: 1200px) {
+/* @media screen and (max-width: 1200px) {
     .main__block {
         width: 100%;
         margin: 0 auto;
@@ -948,7 +948,7 @@ body {
         justify-content: stretch;
         padding: 15px 13px 19px;
     }
-}
+} */
 @media screen and (max-width: 660px) {
     .pop-new-card {
         top: 70px;
