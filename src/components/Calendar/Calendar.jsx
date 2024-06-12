@@ -1,18 +1,29 @@
-import { ru } from 'date-fns/locale'
 import { useState } from 'react'
-import { DayPicker } from 'react-day-picker'
-import 'react-day-picker/dist/style.css'
+import { format } from 'date-fns'
+import { ru } from 'date-fns/locale'
+import { StyledDayPicker } from '../../Styles/Calendar.styled'
+import * as S from '../../Styles/Calendar.styled'
 
 function Calendar() {
     const [selected, setSelected] = useState()
 
+    const footer = (
+        <p>
+            Срок исполнения: <span>{format(new Date(), 'dd.MM.yy')}.</span>
+        </p>
+    )
+
     return (
-        <DayPicker
-            locale={ru}
-            mode="single"
-            selected={selected}
-            onSelect={setSelected}
-        />
+        <S.Calendar>
+            <S.CalendarTitle>Даты</S.CalendarTitle>
+            <StyledDayPicker
+                locale={ru}
+                mode="single"
+                selected={selected}
+                onSelect={setSelected}
+                footer={footer}
+            />
+        </S.Calendar>
     )
 }
 
