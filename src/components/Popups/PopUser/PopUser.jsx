@@ -1,4 +1,4 @@
-import * as S from '../../../Styles/PopUser.styled'
+import * as S from './PopUser.styled'
 
 function PopUser() {
     return (

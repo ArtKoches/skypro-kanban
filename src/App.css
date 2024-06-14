@@ -399,7 +399,7 @@ body {
     float: right;
 }
 
-.subttl {
+/* .subttl {
     color: #000;
     font-size: 14px;
     font-weight: 600;
@@ -515,7 +515,7 @@ body {
 
 ._current {
     font-weight: 700;
-}
+} */
 
 .categories {
     margin-bottom: 20px;

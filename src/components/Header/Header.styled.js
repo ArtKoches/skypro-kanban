@@ -1,4 +1,4 @@
-import { Hover01, Hover02 } from './Common.styled'
+import { Hover01, Hover02 } from '../../Styles/Common.styled'
 import styled from 'styled-components'
 
 export const Header = styled.header`

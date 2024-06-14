@@ -1,4 +1,4 @@
-import * as S from '../../Styles/Column.styled'
+import * as S from './Column.styled'
 import Card from '../Card/Card'
 
 function Column({ title, cardList }) {

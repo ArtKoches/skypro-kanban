@@ -1,4 +1,4 @@
-import * as S from '../../Styles/Header.styled'
+import * as S from './Header.styled'
 import { Container } from '../../Styles/Common.styled'
 import HeaderNav from './HeaderNav'
 

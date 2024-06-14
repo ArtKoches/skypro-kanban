@@ -1,4 +1,4 @@
-import * as S from '../../../Styles/PopExit.styled'
+import * as S from './PopExit.styled'
 import { Button } from '/src/Styles/Common.styled.js'
 
 function PopExitForm() {

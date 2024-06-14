@@ -1,5 +1,5 @@
-import { breakpoints } from '../lib/breakpoints'
-import { topicStyles } from '../lib/topic'
+import { breakpoints } from '../../lib/breakpoints'
+import { topicStyles } from '../../lib/topic'
 import styled, { keyframes } from 'styled-components'
 
 const CardAnimation = keyframes`    

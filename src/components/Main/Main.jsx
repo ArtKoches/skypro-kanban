@@ -1,4 +1,4 @@
-import * as S from '../../Styles/Main.styled'
+import * as S from './Main.styled'
 import { Container } from '../../Styles/Common.styled'
 import { statusList } from '../../data'
 import Column from '../Column/Column'

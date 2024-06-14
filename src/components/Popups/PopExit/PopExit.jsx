@@ -1,4 +1,4 @@
-import * as S from '../../../Styles/PopExit.styled'
+import * as S from './PopExit.styled'
 import PopExitForm from './PopExitForm'
 
 function PopExit() {

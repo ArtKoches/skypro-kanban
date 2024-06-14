@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
-import { StyledDayPicker } from '../../Styles/Calendar.styled'
-import * as S from '../../Styles/Calendar.styled'
+import { StyledDayPicker } from './Calendar.styled'
+import * as S from './Calendar.styled'
 
 function Calendar() {
     const [selected, setSelected] = useState()

@@ -1,4 +1,4 @@
-import * as S from '../../Styles/Loading.styled'
+import * as S from './Loading.styled'
 
 function Loading() {
     return (

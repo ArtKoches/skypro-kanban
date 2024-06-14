@@ -1,4 +1,4 @@
-import * as S from '../../Styles/Card.styled'
+import * as S from './Card.styled'
 import { topicCategory } from '../../lib/topic'
 
 function Card({ topic, title, date }) {
@@ -7,7 +7,7 @@ function Card({ topic, title, date }) {
             <S.CardItem>
                 <S.CardWrapper>
                     <S.CardGroup>
-                        <S.CardTopic $topicColor={`${topicCategory[topic]}`}>
+                        <S.CardTopic $topicColor={topicCategory[topic]}>
                             <S.TopicText>{topic}</S.TopicText>
                         </S.CardTopic>
 

@@ -1,4 +1,4 @@
-import * as S from '../../Styles/Header.styled'
+import * as S from './Header.styled'
 import { useState } from 'react'
 import PopUser from '../Popups/PopUser/PopUser'
 

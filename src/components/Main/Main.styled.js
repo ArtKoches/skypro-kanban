@@ -1,4 +1,4 @@
-import { breakpoints } from '../lib/breakpoints'
+import { breakpoints } from '../../lib/breakpoints'
 import styled from 'styled-components'
 
 export const Main = styled.main`

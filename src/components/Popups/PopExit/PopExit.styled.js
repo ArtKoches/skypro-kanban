@@ -1,5 +1,5 @@
-import { breakpoints } from '../lib/breakpoints'
-import { PopTarget } from './Common.styled'
+import { breakpoints } from '../../../lib/breakpoints'
+import { PopTarget } from '../../../Styles/Common.styled'
 import styled from 'styled-components'
 
 export const PopExit = styled.div`
