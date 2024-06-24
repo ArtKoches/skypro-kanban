@@ -1,6 +1,8 @@
 import * as S from './Header.styled'
 import { Container } from '../../Styles/Common.styled'
 import HeaderNav from './HeaderNav'
+import { Link } from 'react-router-dom'
+import { routePaths } from '../../lib/routes'
 
 function Header({ onCardAdd }) {
     return (
@@ -8,9 +10,9 @@ function Header({ onCardAdd }) {
             <Container>
                 <S.HeaderBlock>
                     <S.HeaderLogo>
-                        <a target="_self">
+                        <Link to={routePaths.MAIN}>
                             <img src="/images/logo.png" alt="logo" />
-                        </a>
+                        </Link>
                     </S.HeaderLogo>
 
                     {/* <S.HeaderLogo>

@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom'
 import * as S from './PopUser.styled'
+import { routePaths } from '../../../lib/routes'
 
 function PopUser() {
     return (
@@ -13,7 +15,7 @@ function PopUser() {
             </S.PopUserSetTheme>
 
             <S.PopUserExitBtn type="button">
-                <a href="#popExit">Выйти</a>
+                <Link to={routePaths.EXIT}>Выйти</Link>
             </S.PopUserExitBtn>
         </S.PopUserSet>
     )

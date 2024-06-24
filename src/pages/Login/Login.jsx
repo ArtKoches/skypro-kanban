@@ -1,7 +1,7 @@
 import { routePaths } from '../../lib/routes'
 import * as S from '/src/Styles/Common.styled.js'
 
-function Login() {
+function Login({ toggleAuth }) {
     return (
         <S.ModalWrapper>
             <S.ModalContainer>
@@ -26,7 +26,7 @@ function Login() {
                                 placeholder="Пароль"
                             />
 
-                            <S.ModalBtn id="btnEnter">Войти</S.ModalBtn>
+                            <S.ModalBtn onClick={toggleAuth}>Войти</S.ModalBtn>
 
                             <S.ModalFormGroup>
                                 <p>Нужно зарегистрироваться?</p>

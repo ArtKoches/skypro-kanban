@@ -1,36 +1,35 @@
+import * as S from './PopNewCard.styled'
+
 function PopNewCardForm() {
     return (
-        <form
-            className="pop-new-card__form form-new"
-            id="formNewCard"
-            action="#"
-        >
-            <div className="form-new__block">
-                <label htmlFor="formTitle" className="subttl">
+        <S.PopNewCardForm id="formNewCard" action="#">
+            <S.FormNewBlock>
+                <S.FormNewTitle htmlFor="formTitle">
                     Название задачи
-                </label>
-                <input
-                    className="form-new__input"
+                </S.FormNewTitle>
+
+                <S.FormNewInput
                     type="text"
                     name="name"
                     id="formTitle"
                     placeholder="Введите название задачи..."
                     autoFocus
                 />
-            </div>
-            <div className="form-new__block">
-                <label htmlFor="textArea" className="subttl">
+            </S.FormNewBlock>
+
+            <S.FormNewBlock>
+                <S.FormNewTitle htmlFor="textArea">
                     Описание задачи
-                </label>
-                <textarea
-                    className="form-new__area"
+                </S.FormNewTitle>
+
+                <S.FormNewArea
                     name="text"
                     id="textArea"
                     placeholder="Введите описание задачи..."
                     defaultValue={''}
                 />
-            </div>
-        </form>
+            </S.FormNewBlock>
+        </S.PopNewCardForm>
     )
 }
 

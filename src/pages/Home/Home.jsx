@@ -3,6 +3,7 @@ import Header from '../../components/Header/Header'
 import Loading from '../../components/Loading/Loading'
 import Main from '../../components/Main/Main'
 import { cardList } from '../../data'
+import { Outlet } from 'react-router-dom'
 
 function Home() {
     const [cards, setCards] = useState(cardList)
@@ -30,6 +31,7 @@ function Home() {
 
     return (
         <>
+            <Outlet />
             <Header onCardAdd={onCardAdd} />
             {isLoading ? <Loading /> : <Main cards={cards} />}
         </>

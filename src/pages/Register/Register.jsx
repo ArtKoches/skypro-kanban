@@ -1,7 +1,7 @@
 import * as S from '../../Styles/Common.styled'
 import { routePaths } from '../../lib/routes'
 
-function Register() {
+function Register({ toggleAuth }) {
     return (
         <S.ModalWrapper>
             <S.ModalContainer>
@@ -33,7 +33,7 @@ function Register() {
                                 placeholder="Пароль"
                             />
 
-                            <S.ModalBtn id="SignUpEnter">
+                            <S.ModalBtn onClick={toggleAuth}>
                                 Зарегистрироваться
                             </S.ModalBtn>
 

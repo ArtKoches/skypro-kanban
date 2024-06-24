@@ -1,10 +1,20 @@
 import 'react-day-picker/dist/style.css'
 import { DayPicker } from 'react-day-picker'
 import styled from 'styled-components'
+import { breakpoints } from '../../lib/breakpoints'
 
 export const Calendar = styled.div`
     width: 182px;
     margin-bottom: 20px;
+
+    @media screen and (max-width: ${breakpoints.md}px) {
+        width: 100%;
+    }
+
+    @media screen and (max-width: ${breakpoints.lg}px) {
+        max-width: 340px;
+        width: 100%;
+    }
 `
 
 export const CalendarTitle = styled.p`
@@ -14,6 +24,10 @@ export const CalendarTitle = styled.p`
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
+
+    @media screen and (max-width: ${breakpoints.lg}px) {
+        padding: 0;
+    }
 `
 
 export const StyledDayPicker = styled(DayPicker)`

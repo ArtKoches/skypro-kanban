@@ -279,7 +279,7 @@ body {
     color: #565eef;
 } */
 
-.pop-new-card {
+/* .pop-new-card {
     display: none;
     width: 100%;
     min-width: 375px;
@@ -337,15 +337,15 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-}
-.pop-new-card__form {
+} */
+/* .pop-new-card__form {
     max-width: 370px;
     width: 100%;
     display: block;
     margin-bottom: 20px;
-}
+} */
 
-.form-new__block {
+/* .form-new__block {
     display: flex;
     flex-direction: column;
 }
@@ -384,8 +384,8 @@ body {
     max-width: 370px;
     margin-top: 14px;
     height: 200px;
-}
-.form-new__create {
+} */
+/* .form-new__create {
     width: 132px;
     height: 30px;
     background-color: #565eef;
@@ -397,7 +397,7 @@ body {
     line-height: 1;
     color: #ffffff;
     float: right;
-}
+} */
 
 /* .subttl {
     color: #000;
@@ -517,7 +517,7 @@ body {
     font-weight: 700;
 } */
 
-.categories {
+/* .categories {
     margin-bottom: 20px;
 }
 .categories__themes {
@@ -543,10 +543,10 @@ body {
     font-weight: 600;
     line-height: 14px;
     white-space: nowrap;
-}
+} */
 
 .pop-browse {
-    display: none;
+    /* display: none; */
     width: 100%;
     height: 100%;
     min-width: 375px;
@@ -950,7 +950,7 @@ body {
     }
 } */
 @media screen and (max-width: 660px) {
-    .pop-new-card {
+    /* .pop-new-card {
         top: 70px;
     }
     .pop-new-card__container {
@@ -966,7 +966,7 @@ body {
     .calendar {
         max-width: 340px;
         width: 100%;
-    }
+    } */
     .calendar__ttl,
     .calendar__nav,
     .calendar__period {
@@ -1009,11 +1009,11 @@ body {
     }
 }
 @media screen and (max-width: 495px) {
-    .container {
+    /* .container {
         width: 100%;
         padding: 0 16px;
-    }
-    .header__btn-main-new {
+    } */
+    /* .header__btn-main-new {
         z-index: 3;
         position: fixed;
         left: 16px;
@@ -1023,30 +1023,30 @@ body {
         height: 40px;
         border-radius: 4px;
         margin-right: 0;
-    }
-    .pop-new-card__container {
+    } */
+    /* .pop-new-card__container {
         padding: 0;
         justify-content: flex-start;
     }
     .pop-new-card__block {
         padding: 20px 16px 32px;
-    }
-    .pop-new-card__form {
+    } */
+    /* .pop-new-card__form {
         max-width: 100%;
         width: 100%;
         display: block;
-    }
-    .pop-new-card__calendar {
+    } */
+    /* .pop-new-card__calendar {
         width: 100%;
-    }
-    .form-new__area {
+    } */
+    /* .form-new__area {
         max-width: 100%;
         height: 34px;
-    }
-    .form-new__create {
+    } */
+    /* .form-new__create {
         width: 100%;
         height: 40px;
-    }
+    } */
     .pop-browse__block {
         padding: 20px 16px 32px;
     }

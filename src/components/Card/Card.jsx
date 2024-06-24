@@ -1,7 +1,8 @@
 import * as S from './Card.styled'
 import { topicCategory } from '../../lib/topic'
+import { Link } from 'react-router-dom'
 
-function Card({ topic, title, date }) {
+function Card({ id, topic, title, date }) {
     return (
         <S.Card>
             <S.CardItem>
@@ -11,13 +12,13 @@ function Card({ topic, title, date }) {
                             <S.TopicText>{topic}</S.TopicText>
                         </S.CardTopic>
 
-                        <a href="#popBrowse" target="_self">
+                        <Link to={`/card/${id}`}>
                             <S.CardBtn>
                                 <div />
                                 <div />
                                 <div />
                             </S.CardBtn>
-                        </a>
+                        </Link>
                     </S.CardGroup>
 
                     <S.CardContent>

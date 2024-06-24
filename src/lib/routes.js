@@ -1,8 +1,9 @@
 export const routePaths = {
     MAIN: '/',
+    CARD: '/card/:id',
+    CREATE: '/create',
+    EXIT: '/exit',
     LOGIN: '/login',
     REGISTER: '/register',
-    CARD_ID: '/card/:id',
-    EXIT: '/exit',
     NOT_FOUND: '*',
 }
