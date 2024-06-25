@@ -25,6 +25,7 @@ function AppRoutes() {
         <>
             <Wrapper>
                 <GlobalStyle />
+
                 <Routes>
                     <Route element={<PrivateRoute isAuth={isAuth} />}>
                         <Route path={routePaths.MAIN} element={<Home />} />
