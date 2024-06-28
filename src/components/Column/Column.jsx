@@ -10,7 +10,7 @@ function Column({ title, cardList }) {
 
             {cardList.map(task => (
                 <Card
-                    key={task.id}
+                    key={task._id}  
                     id={task.id}
                     topic={task.topic}
                     title={task.title}

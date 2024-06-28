@@ -1,5 +1,5 @@
 const baseUserHost = 'https://wedev-api.sky.pro/api/user'
-// const baseKanbanHost = 'https://wedev-api.sky.pro/api/kanban'
+const baseKanbanHost = 'https://wedev-api.sky.pro/api/kanban'
 
 export const userApi = {
     userAuth: async function authorisation({ login, password }) {
@@ -44,6 +44,32 @@ export const userApi = {
 
             const data = await response.json()
             return data.user
+        } catch (error) {
+            if (error.message === 'Failed to fetch') {
+                throw new Error('Проверьте интернет соединение')
+            }
+
+            throw new Error(error.message)
+        }
+    },
+}
+
+export const kanbanApi = {
+    getTasks: async function getListTasks({ token }) {
+        try {
+            const response = await fetch(baseKanbanHost, {
+                method: 'GET',
+                headers: {
+                    Authorization: token,
+                },
+            })
+
+            if (!response.ok) {
+                throw new Error('Ошибка сервера')
+            }
+
+            const data = await response.json()
+            return data.tasks
         } catch (error) {
             if (error.message === 'Failed to fetch') {
                 throw new Error('Проверьте интернет соединение')
