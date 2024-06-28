@@ -1,7 +1,7 @@
 import * as S from './PopExit.styled'
 import PopExitForm from './PopExitForm'
 
-function PopExit({ toggleAuth }) {
+function PopExit({ signOut }) {
     return (
         <>
             <S.PopExit id="popExit">
@@ -11,7 +11,7 @@ function PopExit({ toggleAuth }) {
                             <h2>Выйти из аккаунта?</h2>
                         </S.PopExitTitle>
 
-                        <PopExitForm toggleAuth={toggleAuth} />
+                        <PopExitForm signOut={signOut} />
                     </S.PopExitBlock>
                 </S.PopExitContainer>
             </S.PopExit>

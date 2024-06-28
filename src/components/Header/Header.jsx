@@ -1,5 +1,5 @@
 import * as S from './Header.styled'
-import { Container } from '../../Styles/Common.styled'
+import { Container } from '../../styles/Common.styled'
 import HeaderNav from './HeaderNav'
 import { Link } from 'react-router-dom'
 import { routePaths } from '../../lib/routes'

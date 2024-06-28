@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Hover01, PopTarget } from '../../../Styles/Common.styled'
+import { Hover01, PopTarget } from '../../../styles/Common.styled'
 import { breakpoints } from '../../../lib/breakpoints'
 import { topicStyles } from '../../../lib/topic'
 

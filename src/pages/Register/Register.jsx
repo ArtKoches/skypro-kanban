@@ -1,7 +1,39 @@
-import * as S from '../../Styles/Common.styled'
+import * as S from '../../styles/Common.styled'
 import { routePaths } from '../../lib/routes'
+import { useState } from 'react'
+import { userApi } from '../../api'
 
-function Register({ toggleAuth }) {
+function Register({ signIn }) {
+    const [authData, setAuthData] = useState({
+        login: '',
+        name: '',
+        password: '',
+    })
+    const [error, setError] = useState(null)
+
+    function onChange(event) {
+        const { name, value } = event.target
+        setAuthData({ ...authData, [name]: value })
+    }
+
+    async function onSubmit(event) {
+        try {
+            event.preventDefault()
+
+            if (
+                !authData.login.trim() ||
+                !authData.name.trim() ||
+                !authData.password.trim()
+            ) {
+                throw new Error('Некорректный ввод')
+            }
+
+            await userApi.userReg(authData).then(signIn)
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+
     return (
         <S.ModalWrapper>
             <S.ModalContainer>
@@ -14,9 +46,11 @@ function Register({ toggleAuth }) {
                         <S.ModalFormLogin id="formLogUp" action="#">
                             <S.ModalRegInput
                                 type="text"
-                                name="first-name"
+                                name="name"
                                 id="first-name"
                                 placeholder="Имя"
+                                value={authData.name}
+                                onChange={onChange}
                             />
 
                             <S.ModalRegInput
@@ -24,6 +58,8 @@ function Register({ toggleAuth }) {
                                 name="login"
                                 id="loginReg"
                                 placeholder="Эл. почта"
+                                value={authData.login}
+                                onChange={onChange}
                             />
 
                             <S.ModalRegInput
@@ -31,9 +67,12 @@ function Register({ toggleAuth }) {
                                 name="password"
                                 id="passwordFirst"
                                 placeholder="Пароль"
+                                value={authData.password}
+                                onChange={onChange}
                             />
 
-                            <S.ModalBtn onClick={toggleAuth}>
+                            <S.ErrorMessage>{error}</S.ErrorMessage>
+                            <S.ModalBtn onClick={onSubmit}>
                                 Зарегистрироваться
                             </S.ModalBtn>
 

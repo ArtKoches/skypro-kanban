@@ -1,7 +1,31 @@
+import * as S from '/src/styles/Common.styled.js'
+import { useState } from 'react'
 import { routePaths } from '../../lib/routes'
-import * as S from '/src/Styles/Common.styled.js'
+import { userApi } from '../../api'
 
-function Login({ toggleAuth }) {
+function Login({ signIn }) {
+    const [authData, setAuthData] = useState({ login: '', password: '' })
+    const [error, setError] = useState(null)
+
+    function onChange(event) {
+        const { name, value } = event.target
+        setAuthData({ ...authData, [name]: value })
+    }
+
+    async function onSubmit(event) {
+        try {
+            event.preventDefault()
+
+            if (!authData.login.trim() || !authData.password.trim()) {
+                throw new Error('Некорректный ввод')
+            }
+
+            await userApi.userAuth(authData).then(signIn)
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+
     return (
         <S.ModalWrapper>
             <S.ModalContainer>
@@ -17,6 +41,8 @@ function Login({ toggleAuth }) {
                                 name="login"
                                 id="formlogin"
                                 placeholder="Эл. почта"
+                                value={authData.login}
+                                onChange={onChange}
                             />
 
                             <S.ModalInput
@@ -24,13 +50,15 @@ function Login({ toggleAuth }) {
                                 name="password"
                                 id="formpassword"
                                 placeholder="Пароль"
+                                value={authData.password}
+                                onChange={onChange}
                             />
 
-                            <S.ModalBtn onClick={toggleAuth}>Войти</S.ModalBtn>
+                            <S.ErrorMessage>{error}</S.ErrorMessage>
+                            <S.ModalBtn onClick={onSubmit}>Войти</S.ModalBtn>
 
                             <S.ModalFormGroup>
                                 <p>Нужно зарегистрироваться?</p>
-
                                 <S.ModalLink to={routePaths.REGISTER}>
                                     Регистрируйтесь здесь
                                 </S.ModalLink>

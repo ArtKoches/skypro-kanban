@@ -1,5 +1,5 @@
-import { Wrapper } from './Styles/Common.styled'
-import { GlobalStyle } from './Styles/Global.styled'
+import { Wrapper } from './styles/Common.styled'
+import { GlobalStyle } from './styles/Global.styled'
 import { useState } from 'react'
 import { routePaths } from './lib/routes'
 import { Route, Routes, useNavigate } from 'react-router-dom'
@@ -11,25 +11,38 @@ import Register from './pages/Register/Register'
 import NotFound from './pages/NotFound/NotFound'
 import LogOut from './pages/LogOut/LogOut'
 import CreateTask from './pages/CreateTask/CreateTask'
+import { localStorage } from './lib/helpers'
 
 function AppRoutes() {
-    const [isAuth, setIsAuth] = useState(false)
+    const [isUser, setIsUser] = useState(localStorage.getUser)
     const navigate = useNavigate()
 
-    function toggleAuth() {
-        setIsAuth(prev => !prev)
+    function signIn(user) {
+        setIsUser(user)
+        localStorage.saveUser(user)
         navigate(routePaths.MAIN)
+    }
+
+    function signOut(user) {
+        localStorage.removeUser(user)
+        navigate(routePaths.LOGIN)
+    }
+
+    function getToken() {
+        const token = isUser ? `Bearer ${isUser.token}` : undefined
+        return token
     }
 
     return (
         <>
             <Wrapper>
                 <GlobalStyle />
-
                 <Routes>
-                    <Route element={<PrivateRoute isAuth={isAuth} />}>
-                        <Route path={routePaths.MAIN} element={<Home />} />
-
+                    <Route element={<PrivateRoute isUser={isUser} />}>
+                        <Route
+                            path={routePaths.MAIN}
+                            element={<Home getToken={getToken} />}
+                        />
                         <Route
                             path={routePaths.CARD}
                             element={<CardBrowse />}
@@ -40,22 +53,21 @@ function AppRoutes() {
                         />
                         <Route
                             path={routePaths.EXIT}
-                            element={<LogOut toggleAuth={toggleAuth} />}
+                            element={<LogOut signOut={signOut} />}
                         />
                     </Route>
 
                     <Route
                         path={routePaths.LOGIN}
-                        element={<Login toggleAuth={toggleAuth} />}
+                        element={<Login signIn={signIn} />}
                     />
+
                     <Route
                         path={routePaths.REGISTER}
-                        element={<Register toggleAuth={toggleAuth} />}
+                        element={<Register signIn={signIn} />}
                     />
-                    <Route
-                        path={routePaths.NOT_FOUND}
-                        element={<NotFound toggleAuth={toggleAuth} />}
-                    />
+
+                    <Route path={routePaths.NOT_FOUND} element={<NotFound />} />
                 </Routes>
             </Wrapper>
         </>

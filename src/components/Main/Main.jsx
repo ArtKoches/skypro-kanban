@@ -1,5 +1,5 @@
 import * as S from './Main.styled'
-import { Container } from '../../Styles/Common.styled'
+import { Container } from '../../styles/Common.styled'
 import { statusList } from '../../data'
 import Column from '../Column/Column'
 

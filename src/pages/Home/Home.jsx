@@ -5,7 +5,7 @@ import Main from '../../components/Main/Main'
 import { cardList } from '../../data'
 import { Outlet } from 'react-router-dom'
 
-function Home() {
+function Home({ getToken }) {
     const [cards, setCards] = useState(cardList)
     const [isLoading, setIsLoading] = useState(true)
 
