@@ -61,12 +61,10 @@ function AppRoutes() {
                         path={routePaths.LOGIN}
                         element={<Login signIn={signIn} />}
                     />
-
                     <Route
                         path={routePaths.REGISTER}
                         element={<Register signIn={signIn} />}
                     />
-
                     <Route path={routePaths.NOT_FOUND} element={<NotFound />} />
                 </Routes>
             </Wrapper>

@@ -1,20 +1,21 @@
 import * as S from './Column.styled'
 import Card from '../Card/Card'
+import { format } from 'date-fns'
 
-function Column({ title, cardList }) {
+function Column({ title, tasks }) {
     return (
         <S.Column>
             <S.ColumnTitle>
                 <p>{title}</p>
             </S.ColumnTitle>
 
-            {cardList.map(task => (
+            {tasks.map(task => (
                 <Card
-                    key={task._id}  
-                    id={task.id}
+                    key={task._id}
+                    id={task._id}
                     topic={task.topic}
                     title={task.title}
-                    date={task.date}
+                    date={format(new Date(task.date), 'dd.MM.yy')}
                 />
             ))}
         </S.Column>

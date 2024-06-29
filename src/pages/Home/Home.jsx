@@ -2,20 +2,21 @@ import { useEffect, useState } from 'react'
 import Header from '../../components/Header/Header'
 import Loading from '../../components/Loading/Loading'
 import Main from '../../components/Main/Main'
-// import { cardList } from '../../data'
 import { Outlet } from 'react-router-dom'
 import { kanbanApi } from '../../api'
 
 function Home({ getToken }) {
     const [cards, setCards] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         kanbanApi
             .getTasks({ token: getToken() })
             .then(tasks => setCards(tasks))
+            .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
-    }, [])
+    }, [getToken])
 
     function onCardAdd(event) {
         event.preventDefault()
@@ -36,7 +37,14 @@ function Home({ getToken }) {
         <>
             <Outlet />
             <Header onCardAdd={onCardAdd} />
-            {isLoading ? <Loading /> : <Main cards={cards} />}
+
+            {error ? (
+                <div>{error}</div>
+            ) : isLoading ? (
+                <Loading />
+            ) : (
+                <Main cards={cards} />
+            )}
         </>
     )
 }

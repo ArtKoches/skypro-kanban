@@ -13,7 +13,7 @@ function Main({ cards }) {
                             <Column
                                 key={status}
                                 title={status}
-                                cardList={cards.filter(
+                                tasks={cards.filter(
                                     card => card.status === status,
                                 )}
                             />
