@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 import { kanbanApi } from '../../api'
 import { ErrorMessage } from '../../Common.styled'
 
-function Home({ toggleTheme, getToken }) {
+function Home({ logo, toggleTheme, getToken }) {
     const [cards, setCards] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -37,7 +37,11 @@ function Home({ toggleTheme, getToken }) {
     return (
         <>
             <Outlet />
-            <Header toggleTheme={toggleTheme} onCardAdd={onCardAdd} />
+            <Header
+                logo={logo}
+                toggleTheme={toggleTheme}
+                onCardAdd={onCardAdd}
+            />
 
             {error ? (
                 <ErrorMessage>{error}</ErrorMessage>

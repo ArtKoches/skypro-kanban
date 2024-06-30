@@ -5,7 +5,7 @@ import { breakpoints } from '../../lib/breakpoints'
 export const Header = styled.header`
     width: 100%;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: ${props => props.theme.header.background};
 `
 
 export const HeaderBlock = styled.div`
@@ -72,8 +72,9 @@ export const HeaderUser = styled.a`
     align-items: center;
     justify-content: center;
     font-size: 14px;
+    font-weight: 500;
     line-height: 20px;
-    color: #565eef;
+    color: ${props => props.theme.header.color};
 
     &::after {
         content: '';
@@ -81,8 +82,8 @@ export const HeaderUser = styled.a`
         width: 6px;
         height: 6px;
         border-radius: 1px;
-        border-left: 1.9px solid #565eef;
-        border-bottom: 1.9px solid #565eef;
+        border-left: 1.9px solid ${props => props.theme.header.color};
+        border-bottom: 1.9px solid ${props => props.theme.header.color};
         transform: rotate(-45deg);
         margin: -6px 0 0 5px;
         padding: 0;

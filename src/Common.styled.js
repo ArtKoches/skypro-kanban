@@ -45,8 +45,9 @@ export const Hover02 = css`
 
 export const Hover03 = css`
     &:hover {
-        background-color: #33399b;
+        background-color: ${props => props.theme.hover03.background};
         color: #ffffff;
+        border-color: ${props => props.theme.hover03.borderColor};
     }
 
     &:hover a {

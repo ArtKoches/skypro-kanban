@@ -11,7 +11,7 @@ import LogOut from './pages/LogOut/LogOut'
 import CreateTask from './pages/CreateTask/CreateTask'
 import { localStorage } from './lib/helpers'
 
-function AppRoutes({ toggleTheme }) {
+function AppRoutes({ logo, toggleTheme }) {
     const [isUser, setIsUser] = useState(localStorage.getUser)
     const navigate = useNavigate()
 
@@ -39,17 +39,25 @@ function AppRoutes({ toggleTheme }) {
                         path={routePaths.MAIN}
                         element={
                             <Home
+                                logo={logo}
                                 toggleTheme={toggleTheme}
                                 getToken={getToken}
                             />
                         }
-                    />
-                    <Route path={routePaths.CARD} element={<CardBrowse />} />
-                    <Route path={routePaths.CREATE} element={<CreateTask />} />
-                    <Route
-                        path={routePaths.EXIT}
-                        element={<LogOut signOut={signOut} />}
-                    />
+                    >
+                        <Route
+                            path={routePaths.CARD}
+                            element={<CardBrowse />}
+                        />
+                        <Route
+                            path={routePaths.CREATE}
+                            element={<CreateTask />}
+                        />
+                        <Route
+                            path={routePaths.EXIT}
+                            element={<LogOut signOut={signOut} />}
+                        />
+                    </Route>
                 </Route>
 
                 <Route

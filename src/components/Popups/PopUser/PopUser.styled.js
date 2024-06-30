@@ -9,9 +9,9 @@ export const PopUserSet = styled.div`
     width: 213px;
     height: 205px;
     border-radius: 10px;
-    border: 0.7px solid rgba(148, 166, 190, 0.4);
-    background: #fff;
-    box-shadow: 0px 10px 39px 0px rgba(26, 56, 101, 0.21);
+    border: 0.7px solid ${props => props.theme.userPopup.border};
+    background: ${props => props.theme.userPopup.background};
+    box-shadow: 0px 10px 39px 0px ${props => props.theme.userPopup.boxShadow};
     padding: 34px;
     text-align: center;
     z-index: 2;
@@ -19,23 +19,8 @@ export const PopUserSet = styled.div`
     ${PopTarget}
 `
 
-export const PopUserExitBtn = styled.button`
-    width: 72px;
-    height: 30px;
-    background: transparent;
-    color: #565eef;
-    border-radius: 4px;
-    border: 1px solid #565eef;
-
-    a {
-        color: #565eef;
-    }
-
-    ${Hover03}
-`
-
 export const PopUserSetName = styled.p`
-    color: #000;
+    color: ${props => props.theme.userPopup.text};
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
@@ -56,7 +41,7 @@ export const PopUserSetTheme = styled.div`
     margin-bottom: 30px;
 
     p {
-        color: #000;
+        color: ${props => props.theme.userPopup.text};
         font-size: 14px;
         line-height: 21px;
         letter-spacing: -0.14px;
@@ -79,7 +64,7 @@ export const PopUserSetTheme = styled.div`
             width: 11px;
             height: 11px;
             border-radius: 50%;
-            background-color: #94a6be;
+            background-color: ${props => props.theme.userPopup.themeSwitchBtn};
             transition: 0.5s;
         }
 
@@ -87,4 +72,19 @@ export const PopUserSetTheme = styled.div`
             left: 12px;
         }
     }
+`
+
+export const PopUserExitBtn = styled.button`
+    width: 72px;
+    height: 30px;
+    background: transparent;
+    color: ${props => props.theme.header.color};
+    border-radius: 4px;
+    border: 1px solid ${props => props.theme.header.color};
+
+    a {
+        color: ${props => props.theme.header.color};
+    }
+
+    ${Hover03}
 `

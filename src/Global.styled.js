@@ -19,7 +19,7 @@ a:visited {
 }
 
 button,
-._btn {
+._btn {          
     cursor: pointer;
     outline: none;
 }
@@ -27,13 +27,14 @@ button,
 ul li {
     list-style: none;
 }
-      
+  
 html,
 body {
     width: 100%;
     height: 100%;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: #000000;
+    transition: all 0.25s linear; // Плавный переход цвета при смене темы
 }
 
 div,
