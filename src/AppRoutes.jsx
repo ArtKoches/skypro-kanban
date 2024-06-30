@@ -1,5 +1,3 @@
-import { Wrapper } from './Common.styled'
-import { GlobalStyle } from './Global.styled'
 import { useState } from 'react'
 import { routePaths } from './lib/routes'
 import { Route, Routes, useNavigate } from 'react-router-dom'
@@ -13,7 +11,7 @@ import LogOut from './pages/LogOut/LogOut'
 import CreateTask from './pages/CreateTask/CreateTask'
 import { localStorage } from './lib/helpers'
 
-function AppRoutes() {
+function AppRoutes({ toggleTheme }) {
     const [isUser, setIsUser] = useState(localStorage.getUser)
     const navigate = useNavigate()
 
@@ -35,39 +33,35 @@ function AppRoutes() {
 
     return (
         <>
-            <Wrapper>
-                <GlobalStyle />
-                <Routes>
-                    <Route element={<PrivateRoute isUser={isUser} />}>
-                        <Route
-                            path={routePaths.MAIN}
-                            element={<Home getToken={getToken} />}
-                        />
-                        <Route
-                            path={routePaths.CARD}
-                            element={<CardBrowse />}
-                        />
-                        <Route
-                            path={routePaths.CREATE}
-                            element={<CreateTask />}
-                        />
-                        <Route
-                            path={routePaths.EXIT}
-                            element={<LogOut signOut={signOut} />}
-                        />
-                    </Route>
+            <Routes>
+                <Route element={<PrivateRoute isUser={isUser} />}>
+                    <Route
+                        path={routePaths.MAIN}
+                        element={
+                            <Home
+                                toggleTheme={toggleTheme}
+                                getToken={getToken}
+                            />
+                        }
+                    />
+                    <Route path={routePaths.CARD} element={<CardBrowse />} />
+                    <Route path={routePaths.CREATE} element={<CreateTask />} />
+                    <Route
+                        path={routePaths.EXIT}
+                        element={<LogOut signOut={signOut} />}
+                    />
+                </Route>
 
-                    <Route
-                        path={routePaths.LOGIN}
-                        element={<Login signIn={signIn} />}
-                    />
-                    <Route
-                        path={routePaths.REGISTER}
-                        element={<Register signIn={signIn} />}
-                    />
-                    <Route path={routePaths.NOT_FOUND} element={<NotFound />} />
-                </Routes>
-            </Wrapper>
+                <Route
+                    path={routePaths.LOGIN}
+                    element={<Login signIn={signIn} />}
+                />
+                <Route
+                    path={routePaths.REGISTER}
+                    element={<Register signIn={signIn} />}
+                />
+                <Route path={routePaths.NOT_FOUND} element={<NotFound />} />
+            </Routes>
         </>
     )
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import * as S from './PopUser.styled'
 import { routePaths } from '../../../lib/routes'
 
-function PopUser() {
+function PopUser({ toggleTheme }) {
     return (
         <S.PopUserSet id="user-set-target">
             {/* <a href="">x</a> */}
@@ -11,7 +11,7 @@ function PopUser() {
 
             <S.PopUserSetTheme>
                 <p>Темная тема</p>
-                <input type="checkbox" name="checkbox" />
+                <input onClick={toggleTheme} type="checkbox" name="checkbox" />
             </S.PopUserSetTheme>
 
             <S.PopUserExitBtn type="button">

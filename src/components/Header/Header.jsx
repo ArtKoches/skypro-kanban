@@ -4,7 +4,7 @@ import HeaderNav from './HeaderNav'
 import { Link } from 'react-router-dom'
 import { routePaths } from '../../lib/routes'
 
-function Header({ onCardAdd }) {
+function Header({ toggleTheme, onCardAdd }) {
     return (
         <S.Header>
             <Container>
@@ -21,7 +21,10 @@ function Header({ onCardAdd }) {
                         </a>
                     </S.HeaderLogo> */}
 
-                    <HeaderNav onCardAdd={onCardAdd} />
+                    <HeaderNav
+                        toggleTheme={toggleTheme}
+                        onCardAdd={onCardAdd}
+                    />
                 </S.HeaderBlock>
             </Container>
         </S.Header>

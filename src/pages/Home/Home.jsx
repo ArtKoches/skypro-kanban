@@ -4,8 +4,9 @@ import Loading from '../../components/Loading/Loading'
 import Main from '../../components/Main/Main'
 import { Outlet } from 'react-router-dom'
 import { kanbanApi } from '../../api'
+import { ErrorMessage } from '../../Common.styled'
 
-function Home({ getToken }) {
+function Home({ toggleTheme, getToken }) {
     const [cards, setCards] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
@@ -36,10 +37,10 @@ function Home({ getToken }) {
     return (
         <>
             <Outlet />
-            <Header onCardAdd={onCardAdd} />
+            <Header toggleTheme={toggleTheme} onCardAdd={onCardAdd} />
 
             {error ? (
-                <div>{error}</div>
+                <ErrorMessage>{error}</ErrorMessage>
             ) : isLoading ? (
                 <Loading />
             ) : (

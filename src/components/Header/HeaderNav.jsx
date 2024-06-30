@@ -4,7 +4,7 @@ import PopUser from '../Popups/PopUser/PopUser'
 import { Link } from 'react-router-dom'
 import { routePaths } from '../../lib/routes'
 
-function HeaderNav({ onCardAdd }) {
+function HeaderNav({ toggleTheme, onCardAdd }) {
     const [isOpen, setIsOpen] = useState(false)
     const toggleDropdownUserInfo = () => setIsOpen(prevState => !prevState)
 
@@ -18,7 +18,7 @@ function HeaderNav({ onCardAdd }) {
                 Ivan Ivanov
             </S.HeaderUser>
 
-            {isOpen && <PopUser />}
+            {isOpen && <PopUser toggleTheme={toggleTheme} />}
         </S.HeaderNav>
     )
 }
