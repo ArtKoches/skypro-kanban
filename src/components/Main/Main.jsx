@@ -1,6 +1,6 @@
 import * as S from './Main.styled'
-import { Container } from '../../styles/Common.styled'
-import { statusList } from '../../data'
+import { Container } from '../../Common.styled'
+import { statusList } from '../../lib/data'
 import Column from '../Column/Column'
 
 function Main({ cards }) {

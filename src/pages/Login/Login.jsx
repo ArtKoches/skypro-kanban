@@ -1,4 +1,4 @@
-import * as S from '../../styles/Common.styled'
+import * as S from '../../Common.styled'
 import { useState } from 'react'
 import { routePaths } from '../../lib/routes'
 import { userApi } from '../../api'

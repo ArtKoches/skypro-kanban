@@ -1,4 +1,4 @@
-import { Hover01, Hover02 } from '../../styles/Common.styled'
+import { Hover01, Hover02 } from '../../Common.styled'
 import styled from 'styled-components'
 import { breakpoints } from '../../lib/breakpoints'
 

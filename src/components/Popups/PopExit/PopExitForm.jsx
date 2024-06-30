@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import * as S from './PopExit.styled'
-import { Button } from '../../../styles/Common.styled'
+import { Button } from '../../../Common.styled'
 import { routePaths } from '../../../lib/routes'
 
 function PopExitForm({ signOut }) {

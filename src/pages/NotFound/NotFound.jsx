@@ -1,5 +1,5 @@
 import { routePaths } from '../../lib/routes'
-import { Button } from '../../styles/Common.styled'
+import { Button } from '../../Common.styled'
 import * as S from './NotFound.styled'
 
 function NotFound() {

@@ -1,5 +1,5 @@
-import { Wrapper } from './styles/Common.styled'
-import { GlobalStyle } from './styles/Global.styled'
+import { Wrapper } from './Common.styled'
+import { GlobalStyle } from './Global.styled'
 import { useState } from 'react'
 import { routePaths } from './lib/routes'
 import { Route, Routes, useNavigate } from 'react-router-dom'

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import { breakpoints } from '../lib/breakpoints'
+import { breakpoints } from './lib/breakpoints'
 import { Link } from 'react-router-dom'
 
 export const ErrorMessage = styled.p`
