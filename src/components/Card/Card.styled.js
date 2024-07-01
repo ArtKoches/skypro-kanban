@@ -1,6 +1,6 @@
 import { breakpoints } from '../../lib/breakpoints'
-import { topicStyles } from '../../lib/topic'
 import styled, { keyframes } from 'styled-components'
+import { topicStyles } from '../../lib/topic'
 
 const CardAnimation = keyframes`    
 0% {
@@ -33,7 +33,7 @@ export const CardItem = styled.div`
 export const CardWrapper = styled.div`
     width: 220px;
     height: 130px;
-    background-color: #ffffff;
+    background-color: ${props => props.theme.card.background};
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@ export const CardWrapper = styled.div`
     @media screen and (max-width: ${breakpoints.xl}px) {
         width: 220px;
         height: 130px;
-        background-color: #ffffff;
+        background-color: ${props => props.theme.card.background};
         border-radius: 10px;
         display: flex;
         flex-direction: column;
@@ -75,11 +75,10 @@ export const CardTopic = styled.div`
     padding: 5px 14px;
     border-radius: 18px;
     background-color: ${({ $topicColor }) =>
-        topicStyles[$topicColor]?.backgroundColor || '#b4fdd1'};
+        topicStyles[$topicColor].backgroundColor};
 
     ${TopicText} {
-        color: ${({ $topicColor }) =>
-            topicStyles[$topicColor]?.color || '#06b16e'};
+        color: ${({ $topicColor }) => topicStyles[$topicColor].color};
     }
 `
 
@@ -111,7 +110,7 @@ export const CardTitle = styled.h3`
     font-size: 14px;
     font-weight: 500;
     line-height: 18px;
-    color: #000000;
+    color: ${props => props.theme.card.title};
     margin-bottom: 10px;
 `
 
