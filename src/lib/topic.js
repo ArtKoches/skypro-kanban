@@ -1,24 +1,30 @@
+import { css } from 'styled-components'
+
 export const topicStyles = {
-    _purple: {
-        backgroundColor: '#e9d4ff',
-        color: '#9a48f1',
-    },
-    _orange: {
-        backgroundColor: '#ffe4c2',
-        color: '#FF6D00',
-    },
-    _green: {
-        backgroundColor: '#b4fdd1',
-        color: '#06b16e',
-    },
-    _gray: {
-        backgroundColor: '#94a6be',
-        color: '#ffffff',
-    },
+    _orange: css`
+        ${props => props.theme.topic.webDesign.background};
+        color: ${props => props.theme.topic.webDesign.color};
+    `,
+    _green: css`
+        ${props => props.theme.topic.research.background};
+        color: ${props => props.theme.topic.research.color};
+    `,
+    _purple: css`
+        ${props => props.theme.topic.copywriting.background};
+        color: ${props => props.theme.topic.copywriting.color};
+    `,
+
+    _gray: css`
+        background: #94a6be;
+        color: #ffffff;
+    `,
+    _active_category: css`
+        opacity: 1 !important;
+    `,
 }
 
 export const topicCategory = {
     'Web Design': '_orange',
-    Copywriting: '_purple',
     Research: '_green',
+    Copywriting: '_purple',
 }

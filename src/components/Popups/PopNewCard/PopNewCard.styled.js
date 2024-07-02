@@ -31,7 +31,7 @@ export const PopNewCardContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.4);
+    background: ${props => props.theme.newCardPopup.container};
 
     @media screen and (max-width: ${breakpoints.md}px) {
         padding: 0;
@@ -47,13 +47,14 @@ export const PopNewCardContainer = styled.div`
 export const PopNewCardBlock = styled.div`
     display: block;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: ${props => props.theme.newCardPopup.background};
     max-width: 630px;
     width: 100%;
     padding: 40px 30px 48px;
     border-radius: 10px;
-    border: 0.7px solid #d4dbe5;
+    border: 0.7px solid ${props => props.theme.newCardPopup.border};
     position: relative;
+    box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
 
     @media screen and (max-width: ${breakpoints.md}px) {
         padding: 20px 16px 32px;
@@ -70,7 +71,7 @@ export const PopNewCardContent = styled.div`
 `
 
 export const PopNewCardTitle = styled.h3`
-    color: #000;
+    color: ${props => props.theme.newCardPopup.title};
     font-size: 20px;
     font-weight: 600;
     line-height: 24px;
@@ -105,7 +106,7 @@ export const Categories = styled.div`
 
 export const CategoriesSubtitle = styled.p`
     margin-bottom: 14px;
-    color: #000;
+    color: ${props => props.theme.newCardPopup.title};
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -133,16 +134,15 @@ export const CategoriesTheme = styled.div`
     border-radius: 24px;
     margin-right: 7px;
     opacity: 0.4;
-    background-color: ${({ $topicColor }) =>
-        topicStyles[$topicColor]?.backgroundColor || '#b4fdd1'};
+    background-color: ${({ $topicColor }) => topicStyles[$topicColor]};
 
-    &:first-child {
-        opacity: 1 !important;
+    &:hover {
+        ${topicStyles._active_category}
+        cursor: pointer;
     }
 
     ${CategoriesThemeTitle} {
-        color: ${({ $topicColor }) =>
-            topicStyles[$topicColor]?.color || '#06b16e'};
+        color: ${({ $topicColor }) => topicStyles[$topicColor]};
     }
 `
 
@@ -195,6 +195,7 @@ export const FormNewBlock = styled.div`
         font-size: 14px;
         line-height: 1;
         letter-spacing: -0.14px;
+        color: ${props => props.theme.newCardPopup.title};
 
         &::placeholder {
             font-weight: 400;
@@ -208,7 +209,7 @@ export const FormNewBlock = styled.div`
 `
 
 export const FormNewTitle = styled.label`
-    color: #000;
+    color: ${props => props.theme.newCardPopup.title};
     font-size: 14px;
     font-weight: 600;
     line-height: 1;

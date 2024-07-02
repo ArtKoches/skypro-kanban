@@ -70,7 +70,7 @@ export const Button = styled.button`
     background-color: ${props => (props.$exit ? '#565eef' : 'transparent')};
     border-radius: 4px;
     border: ${props =>
-        props.$exit ? 'none' : '0.7px solid var(--palette-navy-60, #565eef)'};
+        props.$exit ? 'none' : `0.7px solid ${props.theme.exitPopup.exitBtn}`};
     outline: none;
     display: flex;
     align-items: center;
@@ -85,7 +85,8 @@ export const Button = styled.button`
     a {
         width: 100%;
         height: 100%;
-        color: ${props => (props.$exit ? '#ffffff' : '#565eef')};
+        color: ${props =>
+            props.$exit ? '#ffffff' : `${props.theme.exitPopup.link}`};
         display: flex;
         align-items: center;
         justify-content: center;
@@ -107,7 +108,7 @@ export const ModalWrapper = styled.div`
     height: 100%;
     overflow-x: hidden;
     overflow-y: scroll;
-    background-color: #eaeef6;
+    background-color: ${props => props.theme.userAuth.wrapper};
 `
 
 export const ModalContainer = styled.div`
@@ -135,12 +136,12 @@ export const Modal = styled.div`
 export const ModalBlock = styled.div`
     display: block;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: ${props => props.theme.userAuth.background};
     max-width: 368px;
     width: 100%;
     padding: 50px 60px;
     border-radius: 10px;
-    border: 0.7px solid #d4dbe5;
+    border: 0.7px solid ${props => props.theme.userAuth.border};
     box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
 
     @media screen and (max-width: ${breakpoints.sm}px) {
@@ -179,6 +180,8 @@ export const ModalInput = styled.input`
     border: 0.7px solid rgba(148, 166, 190, 0.4);
     outline: none;
     padding: 10px 8px;
+    color: ${props => props.theme.userAuth.color};
+    background-color: ${props => props.theme.userAuth.input};
 
     &:first-child {
         margin-bottom: 7px;
@@ -225,19 +228,6 @@ export const ModalBtn = styled.button`
     }
 `
 
-export const ModalLink = styled(Link)`
-    color: rgba(148, 166, 190, 0.4);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 150%;
-    letter-spacing: -0.14px;
-    text-decoration: underline;
-`
-
-export const MainLink = styled(ModalLink)`
-    text-decoration: none;
-`
-
 export const ModalFormGroup = styled.div`
     text-align: center;
 
@@ -249,4 +239,14 @@ export const ModalFormGroup = styled.div`
         letter-spacing: -0.14px;
     }
 `
+
+export const ModalLink = styled(Link)`
+    color: rgba(148, 166, 190, 0.4);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    letter-spacing: -0.14px;
+    text-decoration: underline;
+`
+
 /*end modal styles*/

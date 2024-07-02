@@ -20,7 +20,7 @@ export const Calendar = styled.div`
 export const CalendarTitle = styled.p`
     margin-bottom: 14px;
     padding: 0 7px;
-    color: #000;
+    color: ${props => props.theme.calendar.title};
     font-size: 14px;
     font-weight: 600;
     line-height: 1;
@@ -37,8 +37,13 @@ export const StyledDayPicker = styled(DayPicker)`
 
     --rdp-cell-size: 25px;
     --rdp-caption-font-size: 14px;
-    --rdp-accent-color: #94a6be;
-    --rdp-background-color: #eaeef6;
+    --rdp-accent-color: ${props => props.theme.calendar.hover};
+    --rdp-background-color: ${props => props.theme.calendar.hover};
+    --rdp-selected-color: ${props => props.theme.calendar.text};
+
+    .rdp-day_today {
+        color: ${props => props.theme.calendar.text};
+    }
 
     svg {
         height: 10px;
@@ -49,7 +54,7 @@ export const StyledDayPicker = styled(DayPicker)`
         padding: 0 7px;
 
         span {
-            color: #000000;
+            color: ${props => props.theme.calendar.title};
         }
     }
 `

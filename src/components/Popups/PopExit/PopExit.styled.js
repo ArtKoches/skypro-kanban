@@ -25,18 +25,18 @@ export const PopExitContainer = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.4);
+    background: ${props => props.theme.exitPopup.container};
 `
 
 export const PopExitBlock = styled.div`
     display: block;
     margin: 0 auto;
-    background-color: #ffffff;
+    background-color: ${props => props.theme.exitPopup.background};
     max-width: 370px;
     width: 100%;
     padding: 50px 60px;
     border-radius: 10px;
-    border: 0.7px solid #d4dbe5;
+    border: 0.7px solid ${props => props.theme.exitPopup.border};
     box-shadow: 0px 4px 67px -12px rgba(0, 0, 0, 0.13);
 
     @media only screen and (max-width: ${breakpoints.sm}px) {
@@ -52,6 +52,7 @@ export const PopExitTitle = styled.div`
         line-height: 30px;
         letter-spacing: -0.4px;
         margin-bottom: 20px;
+        color: ${props => props.theme.exitPopup.title};
     }
 `
 

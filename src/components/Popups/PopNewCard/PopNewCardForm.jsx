@@ -2,7 +2,7 @@ import * as S from './PopNewCard.styled'
 
 function PopNewCardForm() {
     return (
-        <S.PopNewCardForm id="formNewCard" action="#">
+        <S.PopNewCardForm action="#">
             <S.FormNewBlock>
                 <S.FormNewTitle htmlFor="formTitle">
                     Название задачи

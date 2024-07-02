@@ -4,7 +4,7 @@ import PopExitForm from './PopExitForm'
 function PopExit({ signOut }) {
     return (
         <>
-            <S.PopExit id="popExit">
+            <S.PopExit >
                 <S.PopExitContainer>
                     <S.PopExitBlock>
                         <S.PopExitTitle>

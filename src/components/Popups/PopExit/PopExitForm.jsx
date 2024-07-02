@@ -5,18 +5,14 @@ import { routePaths } from '../../../lib/routes'
 
 function PopExitForm({ signOut }) {
     return (
-        <S.PopExitForm id="formExit" action="#">
+        <S.PopExitForm action="#">
             <S.PopExitFormGroup>
-                <Button onClick={signOut} $exit id="exitYes">
+                <Button onClick={signOut} $exit>
                     Да, выйти
-                    {/* <a href="modal/signin.html">Да, выйти</a>{' '} */}
                 </Button>
 
-                <Button id="exitNo">
-                    <Link to={routePaths.MAIN}>
-                        Нет, остаться
-                        {/* <a href="main.html">Нет, остаться</a>{' '} */}
-                    </Link>
+                <Button>
+                    <Link to={routePaths.MAIN}>Нет, остаться</Link>
                 </Button>
             </S.PopExitFormGroup>
         </S.PopExitForm>

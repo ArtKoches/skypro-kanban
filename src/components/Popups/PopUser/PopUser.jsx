@@ -4,8 +4,7 @@ import { routePaths } from '../../../lib/routes'
 
 function PopUser({ toggleTheme }) {
     return (
-        <S.PopUserSet id="user-set-target">
-            {/* <a href="">x</a> */}
+        <S.PopUserSet>
             <S.PopUserSetName>Ivan Ivanov</S.PopUserSetName>
             <S.PopUserSetMail>ivan.ivanov@gmail.com</S.PopUserSetMail>
 
