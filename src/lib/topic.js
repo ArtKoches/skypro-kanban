@@ -13,13 +13,16 @@ export const topicStyles = {
         ${props => props.theme.topic.copywriting.background};
         color: ${props => props.theme.topic.copywriting.color};
     `,
-
     _gray: css`
         background: #94a6be;
         color: #ffffff;
     `,
+
     _active_category: css`
         opacity: 1 !important;
+    `,
+    _hide: css`
+        display: none;
     `,
 }
 

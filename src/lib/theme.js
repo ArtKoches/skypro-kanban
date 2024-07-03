@@ -50,6 +50,15 @@ export const lightTheme = {
         color: '#000',
     },
 
+    browsePopup: {
+        container: 'rgba(0, 0, 0, 0.4)',
+        background: '#ffffff',
+        border: '#d4dbe5',
+        title: '#000',
+        button: '#565eef',
+        form: '#eaeef6',
+    },
+
     // Другие стили светлой темы
 }
 
@@ -99,6 +108,15 @@ export const darkTheme = {
         border: '#4E5566',
         input: 'transparent',
         color: '#FFF',
+    },
+
+    browsePopup: {
+        container: 'rgba(0, 0, 0, 0.8)',
+        background: '#20202C',
+        border: '#4E5566',
+        title: '#FFF',
+        button: '#FFFFFF',
+        form: '#151419',
     },
 
     // Другие стили темной темы

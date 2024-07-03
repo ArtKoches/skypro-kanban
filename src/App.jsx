@@ -1,4 +1,3 @@
-import './App.css'
 import { useLayoutEffect, useState } from 'react'
 import { Wrapper } from './Common.styled'
 import { GlobalStyle } from './Global.styled'

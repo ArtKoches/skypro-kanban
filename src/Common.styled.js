@@ -58,12 +58,6 @@ export const Hover03 = css`
     }
 `
 
-export const PopTarget = css`
-    &:target {
-        display: block;
-    }
-`
-
 export const Button = styled.button`
     width: 153px;
     height: 30px;

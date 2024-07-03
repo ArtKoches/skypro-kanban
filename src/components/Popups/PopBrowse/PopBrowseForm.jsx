@@ -1,24 +1,24 @@
+import * as S from './PopBrowse.styled.js'
+
 function PopBrowseForm() {
     return (
-        <form
-            className="pop-browse__form form-browse"
-            id="formBrowseCard"
-            action="#"
-        >
-            <div className="form-browse__block">
-                <label htmlFor="textArea01" className="subttl">
-                    Описание задачи
-                </label>
-                <textarea
-                    className="form-browse__area"
-                    name="text"
-                    id="textArea01"
-                    readOnly
-                    placeholder="Введите описание задачи..."
-                    defaultValue={''}
-                />
-            </div>
-        </form>
+        <>
+            <S.FormBrowse.form action="#">
+                <S.FormBrowse.form_block>
+                    <S.FormBrowse.form_subtitle htmlFor="textArea01">
+                        Описание задачи
+                    </S.FormBrowse.form_subtitle>
+
+                    <S.FormBrowse.form_textarea
+                        name="text"
+                        id="textArea01"
+                        readOnly
+                        placeholder="Введите описание задачи..."
+                        defaultValue={''}
+                    />
+                </S.FormBrowse.form_block>
+            </S.FormBrowse.form>
+        </>
     )
 }
 

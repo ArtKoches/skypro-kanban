@@ -2,109 +2,115 @@ import PopBrowseForm from './PopBrowseForm'
 import Calendar from '../../Calendar/Calendar'
 import { Link, useParams } from 'react-router-dom'
 import { routePaths } from '../../../lib/routes'
+import { topicCategory } from '../../../lib/topic'
+import * as S from './PopBrowse.styled'
 
 function PopBrowse() {
     const { id } = useParams()
 
     return (
-        <div className="pop-browse" id="popBrowse">
-            <div className="pop-browse__container">
-                <div className="pop-browse__block">
-                    <div className="pop-browse__content">
-                        <div className="pop-browse__top-block">
-                            <h3 className="pop-browse__ttl">
-                                Название задачи: {id}
-                            </h3>
+        <>
+            <S.PopBrowse.wrapper>
+                <S.PopBrowse.container>
+                    <S.PopBrowse.block>
+                        <S.PopBrowse.content>
+                            <S.PopBrowse.top_block>
+                                <S.PopBrowse.title>
+                                    Название задачи:{id}
+                                </S.PopBrowse.title>
 
-                            <div className="categories__theme theme-top _orange _active-category">
-                                <p className="_orange">Web Design</p>
-                            </div>
-                        </div>
-
-                        <div className="pop-browse__status status">
-                            <p className="status__p subttl">Статус</p>
-
-                            <div className="status__themes">
-                                <div className="status__theme _hide">
-                                    <p>Без статуса</p>
-                                </div>
-
-                                <div className="status__theme _gray">
-                                    <p className="_gray">Нужно сделать</p>
-                                </div>
-
-                                <div className="status__theme _hide">
-                                    <p>В работе</p>
-                                </div>
-
-                                <div className="status__theme _hide">
-                                    <p>Тестирование</p>
-                                </div>
-
-                                <div className="status__theme _hide">
-                                    <p>Готово</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="pop-browse__wrap">
-                            <PopBrowseForm />
-                            <Calendar />
-                        </div>
-
-                        <div className="theme-down__categories theme-down">
-                            <p className="categories__p subttl">Категория</p>
-
-                            <div className="categories__theme _orange _active-category">
-                                <p className="_orange">Web Design</p>
-                            </div>
-                        </div>
-
-                        <div className="pop-browse__btn-browse ">
-                            <div className="btn-group">
-                                <button className="btn-browse__edit _btn-bor _hover03">
-                                    <a href="#">Редактировать задачу</a>
-                                </button>
-
-                                <button className="btn-browse__delete _btn-bor _hover03">
-                                    <a href="#">Удалить задачу</a>
-                                </button>
-                            </div>
-
-                            <button className="btn-browse__close _btn-bg _hover01">
-                                <Link to={routePaths.MAIN}>
-                                    Закрыть
-                                    {/* <a href="#">Закрыть</a> */}
-                                </Link>
-                            </button>
-                        </div>
-
-                        <div className="pop-browse__btn-edit _hide">
-                            <div className="btn-group">
-                                <button className="btn-edit__edit _btn-bg _hover01">
-                                    <a href="#">Сохранить</a>
-                                </button>
-
-                                <button className="btn-edit__edit _btn-bor _hover03">
-                                    <a href="#">Отменить</a>
-                                </button>
-
-                                <button
-                                    className="btn-edit__delete _btn-bor _hover03"
-                                    id="btnDelete"
+                                <S.PopBrowse.topic_category
+                                    $topicColor={topicCategory['Web Design']}
                                 >
-                                    <a href="#">Удалить задачу</a>
-                                </button>
-                            </div>
+                                    <p>Web Design</p>
+                                </S.PopBrowse.topic_category>
+                            </S.PopBrowse.top_block>
 
-                            <button className="btn-edit__close _btn-bg _hover01">
-                                <a href="#">Закрыть</a>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            <S.PopBrowse.status>
+                                <S.PopBrowse.status_subtitle>
+                                    Статус
+                                </S.PopBrowse.status_subtitle>
+
+                                <S.PopBrowse.topic_statuses>
+                                    <S.PopBrowse.topic_status $hide>
+                                        <p>Без статуса</p>
+                                    </S.PopBrowse.topic_status>
+
+                                    <S.PopBrowse.topic_status $current>
+                                        <p>Нужно сделать</p>
+                                    </S.PopBrowse.topic_status>
+
+                                    <S.PopBrowse.topic_status $hide>
+                                        <p>В работе</p>
+                                    </S.PopBrowse.topic_status>
+
+                                    <S.PopBrowse.topic_status $hide>
+                                        <p>Тестирование</p>
+                                    </S.PopBrowse.topic_status>
+
+                                    <S.PopBrowse.topic_status $hide>
+                                        <p>Готово</p>
+                                    </S.PopBrowse.topic_status>
+                                </S.PopBrowse.topic_statuses>
+                            </S.PopBrowse.status>
+
+                            <S.PopBrowse.wrap>
+                                <PopBrowseForm />
+                                <Calendar />
+                            </S.PopBrowse.wrap>
+
+                            <S.PopBrowse.down_topic>
+                                <S.PopBrowse.down_topic_subtitle>
+                                    Категория
+                                </S.PopBrowse.down_topic_subtitle>
+
+                                <S.PopBrowse.down_topic_category
+                                    $topicColor={topicCategory['Web Design']}
+                                >
+                                    <p>Web Design</p>
+                                </S.PopBrowse.down_topic_category>
+                            </S.PopBrowse.down_topic>
+
+                            <S.PopBrowseButtons.btn_browse>
+                                <S.PopBrowseButtons.btn_group>
+                                    <button>
+                                        <a href="#">Редактировать задачу</a>
+                                    </button>
+
+                                    <button>
+                                        <a href="#">Удалить задачу</a>
+                                    </button>
+                                </S.PopBrowseButtons.btn_group>
+
+                                <S.PopBrowseButtons.btn_close>
+                                    <Link to={routePaths.MAIN}>Закрыть</Link>
+                                </S.PopBrowseButtons.btn_close>
+                            </S.PopBrowseButtons.btn_browse>
+
+                            <S.PopBrowseButtons.btn_browse $hide>
+                                <S.PopBrowseButtons.btn_edit_group>
+                                    <S.PopBrowseButtons.btn_save>
+                                        <a href="#">Сохранить</a>
+                                    </S.PopBrowseButtons.btn_save>
+
+                                    <S.PopBrowseButtons.btn_cancel>
+                                        <a href="#">Отменить</a>
+                                    </S.PopBrowseButtons.btn_cancel>
+
+                                    <S.PopBrowseButtons.btn_delete>
+                                        <a href="#">Удалить задачу</a>
+                                    </S.PopBrowseButtons.btn_delete>
+                                </S.PopBrowseButtons.btn_edit_group>
+
+                                <S.PopBrowseButtons.btn_close>
+                                    <Link to={routePaths.MAIN}>Закрыть</Link>
+                                </S.PopBrowseButtons.btn_close>
+                            </S.PopBrowseButtons.btn_browse>
+                        </S.PopBrowse.content>
+                    </S.PopBrowse.block>
+                </S.PopBrowse.container>
+            </S.PopBrowse.wrapper>
+        </>
     )
 }
 

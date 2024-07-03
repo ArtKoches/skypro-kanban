@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { Hover01, PopTarget } from '../../../Common.styled'
+import { Hover01 } from '../../../Common.styled'
 import { breakpoints } from '../../../lib/breakpoints'
 import { topicStyles } from '../../../lib/topic'
 
@@ -14,8 +14,6 @@ export const PopNewCard = styled.div`
     top: 0;
     left: 0;
     z-index: 6;
-
-    ${PopTarget}
 
     @media screen and (max-width: ${breakpoints.lg}px) {
         top: 70px;

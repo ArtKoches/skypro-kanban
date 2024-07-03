@@ -1,4 +1,4 @@
-import { Hover03, PopTarget } from '../../../Common.styled'
+import { Hover03 } from '../../../Common.styled'
 import styled from 'styled-components'
 
 export const PopUserSet = styled.div`
@@ -15,8 +15,6 @@ export const PopUserSet = styled.div`
     padding: 34px;
     text-align: center;
     z-index: 2;
-
-    ${PopTarget}
 `
 
 export const PopUserSetName = styled.p`

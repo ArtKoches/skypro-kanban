@@ -43,5 +43,6 @@ a,
 input,
 textarea {
   font-family: "Roboto", sans-serif;
+  font-weight: 500;
 }
 `
