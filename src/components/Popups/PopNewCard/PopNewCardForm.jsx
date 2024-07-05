@@ -1,6 +1,8 @@
 import * as S from './PopNewCard.styled'
 
-function PopNewCardForm() {
+function PopNewCardForm({ newCard, onChange }) {
+    console.log(newCard)
+
     return (
         <S.PopNewCardForm action="#">
             <S.FormNewBlock>
@@ -10,10 +12,12 @@ function PopNewCardForm() {
 
                 <S.FormNewInput
                     type="text"
-                    name="name"
+                    name="title"
                     id="formTitle"
                     placeholder="Введите название задачи..."
                     autoFocus
+                    value={newCard.title}
+                    onChange={onChange}
                 />
             </S.FormNewBlock>
 
@@ -23,10 +27,11 @@ function PopNewCardForm() {
                 </S.FormNewTitle>
 
                 <S.FormNewArea
-                    name="text"
+                    name="description"
                     id="textArea"
                     placeholder="Введите описание задачи..."
-                    defaultValue={''}
+                    value={newCard.description}
+                    onChange={onChange}
                 />
             </S.FormNewBlock>
         </S.PopNewCardForm>

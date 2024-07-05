@@ -1,10 +1,42 @@
+import * as S from './PopNewCard.styled'
 import PopNewCardForm from './PopNewCardForm'
 import Calendar from '../../Calendar/Calendar'
 import { routePaths } from '../../../lib/routes'
-import * as S from './PopNewCard.styled'
 import { topicCategory } from '../../../lib/topic'
+import { useState } from 'react'
+import { kanbanApi } from '../../../api'
+import { ErrorMessage } from '../../../Common.styled'
+import { useCardContext } from '../../../contexts/Card/useCardContext'
 
 function PopNewCard() {
+    const { updateCard } = useCardContext()
+    const [error, setError] = useState(null)
+    const [newCard, setNewCard] = useState({
+        title: '',
+        topic: '',
+        description: '',
+        date: '',
+    })
+
+    function onChange(event) {
+        const { name, value } = event.target
+        setNewCard({ ...newCard, [name]: value })
+    }
+
+    async function onSubmit(event) {
+        try {
+            event.preventDefault()
+
+            if (!newCard.title.trim() || !newCard.description.trim()) {
+                throw new Error('Некорректный ввод/Заполните все поля')
+            }
+
+            await kanbanApi.createTask(newCard).then(updateCard)
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+
     return (
         <S.PopNewCard>
             <S.PopNewCardContainer>
@@ -17,8 +49,12 @@ function PopNewCard() {
                         </S.PopNewCardClose>
 
                         <S.PopNewCardWrap>
-                            <PopNewCardForm />
-                            <Calendar />
+                            <PopNewCardForm
+                                newCard={newCard}
+                                onChange={onChange}
+                            />
+
+                            <Calendar date={newCard.date} />
                         </S.PopNewCardWrap>
 
                         <S.Categories>
@@ -53,7 +89,10 @@ function PopNewCard() {
                             </S.CategoriesThemes>
                         </S.Categories>
 
-                        <S.FormNewCreateBtn>Создать задачу</S.FormNewCreateBtn>
+                        <ErrorMessage>{error}</ErrorMessage>
+                        <S.FormNewCreateBtn onClick={onSubmit}>
+                            Создать задачу
+                        </S.FormNewCreateBtn>
                     </S.PopNewCardContent>
                 </S.PopNewCardBlock>
             </S.PopNewCardContainer>

@@ -1,5 +1,5 @@
 import { userFromLs } from '../../lib/helpers'
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { routePaths } from '../../lib/routes'
 
@@ -8,6 +8,8 @@ export const UserContext = createContext(null)
 export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(userFromLs.getUser)
     const navigate = useNavigate()
+
+    useEffect(() => userFromLs.saveUser(user), [user])
 
     function getToken() {
         const token = user ? `Bearer ${user.token}` : undefined

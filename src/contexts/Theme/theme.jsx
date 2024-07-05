@@ -5,9 +5,7 @@ export const ThemeContext = createContext(null)
 export const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
 
-    useLayoutEffect(() => {
-        localStorage.setItem('theme', theme)
-    }, [theme])
+    useLayoutEffect(() => localStorage.setItem('theme', theme), [theme])
 
     function toggleTheme() {
         return theme === 'light' ? setTheme('dark') : setTheme('light')

@@ -1,11 +1,14 @@
-import { useState } from 'react'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import { StyledDayPicker } from './Calendar.styled'
 import * as S from './Calendar.styled'
+import { useState } from 'react'
 
-function Calendar() {
-    const [selected, setSelected] = useState()
+function Calendar({ date }) {
+    const [selected, setSelected] = useState(null)
+
+    date = selected
+    console.log(date)
 
     const footer = selected ? (
         <p>
