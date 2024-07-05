@@ -5,11 +5,14 @@ import Main from '../../components/Main/Main'
 import { Outlet } from 'react-router-dom'
 import { kanbanApi } from '../../api'
 import { ErrorMessage } from '../../Common.styled'
+import { useUserContext } from '../../contexts/User/useUserContext'
+import { useCardContext } from '../../contexts/Card/useCardContext'
 
-function Home({ logo, toggleTheme, getToken }) {
-    const [cards, setCards] = useState([])
+function Home() {
     const [isLoading, setIsLoading] = useState(true)
     const [error, setError] = useState(null)
+    const { getToken } = useUserContext()
+    const { cards, setCards } = useCardContext()
 
     useEffect(() => {
         kanbanApi
@@ -17,31 +20,12 @@ function Home({ logo, toggleTheme, getToken }) {
             .then(tasks => setCards(tasks))
             .catch(error => setError(error.message))
             .finally(() => setIsLoading(false))
-    }, [getToken])
-
-    function onCardAdd(event) {
-        event.preventDefault()
-        const newDate = new Date().toLocaleDateString()
-
-        const newCard = {
-            id: cards.length + 1,
-            topic: 'Web Design',
-            title: 'Новая задача',
-            date: newDate,
-            status: 'Без статуса',
-        }
-
-        setCards([...cards, newCard])
-    }
+    }, [getToken, setCards])
 
     return (
         <>
             <Outlet />
-            <Header
-                logo={logo}
-                toggleTheme={toggleTheme}
-                onCardAdd={onCardAdd}
-            />
+            <Header />
 
             {error ? (
                 <ErrorMessage>{error}</ErrorMessage>

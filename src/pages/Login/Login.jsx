@@ -2,8 +2,10 @@ import * as S from '../../Common.styled'
 import { useState } from 'react'
 import { routePaths } from '../../lib/routes'
 import { userApi } from '../../api'
+import { useUserContext } from '../../contexts/User/useUserContext'
 
-function Login({ signIn }) {
+function Login() {
+    const { signIn } = useUserContext()
     const [authData, setAuthData] = useState({ login: '', password: '' })
     const [error, setError] = useState(null)
 

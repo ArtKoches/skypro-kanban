@@ -1,9 +1,9 @@
 import PopExit from '../../components/Popups/PopExit/PopExit'
 
-function LogOut({ signOut }) {
+function LogOut() {
     return (
         <>
-            <PopExit signOut={signOut} />
+            <PopExit />
         </>
     )
 }

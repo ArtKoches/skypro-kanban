@@ -1,6 +1,5 @@
-import { useState } from 'react'
 import { routePaths } from './lib/routes'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import PrivateRoute from './components/PrivateRoute/PrivateRoute'
 import Home from './pages/Home/Home'
 import CardBrowse from './pages/CardBrowse/CardBrowse'
@@ -9,42 +8,13 @@ import Register from './pages/Register/Register'
 import NotFound from './pages/NotFound/NotFound'
 import LogOut from './pages/LogOut/LogOut'
 import CreateTask from './pages/CreateTask/CreateTask'
-import { localStorage } from './lib/helpers'
 
-function AppRoutes({ logo, toggleTheme }) {
-    const [isUser, setIsUser] = useState(localStorage.getUser)
-    const navigate = useNavigate()
-
-    function signIn(user) {
-        setIsUser(user)
-        localStorage.saveUser(user)
-        navigate(routePaths.MAIN)
-    }
-
-    function signOut(user) {
-        localStorage.removeUser(user)
-        navigate(routePaths.LOGIN)
-    }
-
-    function getToken() {
-        const token = isUser ? `Bearer ${isUser.token}` : undefined
-        return token
-    }
-
+function AppRoutes() {
     return (
         <>
             <Routes>
-                <Route element={<PrivateRoute isUser={isUser} />}>
-                    <Route
-                        path={routePaths.MAIN}
-                        element={
-                            <Home
-                                logo={logo}
-                                toggleTheme={toggleTheme}
-                                getToken={getToken}
-                            />
-                        }
-                    >
+                <Route element={<PrivateRoute />}>
+                    <Route path={routePaths.MAIN} element={<Home />}>
                         <Route
                             path={routePaths.CARD}
                             element={<CardBrowse />}
@@ -53,21 +23,12 @@ function AppRoutes({ logo, toggleTheme }) {
                             path={routePaths.CREATE}
                             element={<CreateTask />}
                         />
-                        <Route
-                            path={routePaths.EXIT}
-                            element={<LogOut signOut={signOut} />}
-                        />
+                        <Route path={routePaths.EXIT} element={<LogOut />} />
                     </Route>
                 </Route>
 
-                <Route
-                    path={routePaths.LOGIN}
-                    element={<Login signIn={signIn} />}
-                />
-                <Route
-                    path={routePaths.REGISTER}
-                    element={<Register signIn={signIn} />}
-                />
+                <Route path={routePaths.LOGIN} element={<Login />} />
+                <Route path={routePaths.REGISTER} element={<Register />} />
                 <Route path={routePaths.NOT_FOUND} element={<NotFound />} />
             </Routes>
         </>

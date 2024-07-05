@@ -1,4 +1,4 @@
-export const localStorage = {
+export const userFromLs = {
     saveUser: function saveUserToLocalStorage(user) {
         window.localStorage.setItem('user', JSON.stringify(user))
     },

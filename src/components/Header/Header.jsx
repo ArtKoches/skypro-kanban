@@ -3,22 +3,22 @@ import { Container } from '../../Common.styled'
 import HeaderNav from './HeaderNav'
 import { Link } from 'react-router-dom'
 import { routePaths } from '../../lib/routes'
+import { useThemeContext } from '../../contexts/Theme/useThemeContext'
 
-function Header({ logo, toggleTheme, onCardAdd }) {
+function Header() {
+    const { toggleLogoPath } = useThemeContext()
+
     return (
         <S.Header>
             <Container>
                 <S.HeaderBlock>
                     <S.HeaderLogo>
                         <Link to={routePaths.MAIN}>
-                            <img src={logo} alt="logo" />
+                            <img src={toggleLogoPath()} alt="logo" />
                         </Link>
                     </S.HeaderLogo>
 
-                    <HeaderNav
-                        toggleTheme={toggleTheme}
-                        onCardAdd={onCardAdd}
-                    />
+                    <HeaderNav />
                 </S.HeaderBlock>
             </Container>
         </S.Header>

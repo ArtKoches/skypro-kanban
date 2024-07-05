@@ -1,12 +1,14 @@
+import * as S from './PopBrowse.styled'
 import PopBrowseForm from './PopBrowseForm'
 import Calendar from '../../Calendar/Calendar'
 import { Link, useParams } from 'react-router-dom'
 import { routePaths } from '../../../lib/routes'
 import { topicCategory } from '../../../lib/topic'
-import * as S from './PopBrowse.styled'
+// import { useCardContext } from '../../../contexts/Card/useCardContext'
 
 function PopBrowse() {
     const { id } = useParams()
+    // const { cards, setCards } = useCardContext()
 
     return (
         <>

@@ -3,10 +3,14 @@ import { useState } from 'react'
 import PopUser from '../Popups/PopUser/PopUser'
 import { Link } from 'react-router-dom'
 import { routePaths } from '../../lib/routes'
+import { useUserContext } from '../../contexts/User/useUserContext'
+import { useCardContext } from '../../contexts/Card/useCardContext'
 
-function HeaderNav({ toggleTheme, onCardAdd }) {
+function HeaderNav() {
     const [isOpen, setIsOpen] = useState(false)
     const toggleDropdownUserInfo = () => setIsOpen(prevState => !prevState)
+    const { user } = useUserContext()
+    const { onCardAdd } = useCardContext()
 
     return (
         <S.HeaderNav>
@@ -15,10 +19,10 @@ function HeaderNav({ toggleTheme, onCardAdd }) {
             </S.HeaderCreateBtn>
 
             <S.HeaderUser onClick={toggleDropdownUserInfo}>
-                Ivan Ivanov
+                {user.name}
             </S.HeaderUser>
 
-            {isOpen && <PopUser toggleTheme={toggleTheme} />}
+            {isOpen && <PopUser />}
         </S.HeaderNav>
     )
 }

@@ -1,17 +1,17 @@
 import * as S from './PopExit.styled'
 import PopExitForm from './PopExitForm'
 
-function PopExit({ signOut }) {
+function PopExit() {
     return (
         <>
-            <S.PopExit >
+            <S.PopExit>
                 <S.PopExitContainer>
                     <S.PopExitBlock>
                         <S.PopExitTitle>
                             <h2>Выйти из аккаунта?</h2>
                         </S.PopExitTitle>
 
-                        <PopExitForm signOut={signOut} />
+                        <PopExitForm />
                     </S.PopExitBlock>
                 </S.PopExitContainer>
             </S.PopExit>

@@ -9,9 +9,9 @@ function Column({ title, tasks }) {
                 <p>{title}</p>
             </S.ColumnTitle>
 
-            {tasks.map((task, keyId) => (
+            {tasks.map((task, key) => (
                 <Card
-                    key={keyId}
+                    key={key}
                     id={task._id}
                     topic={task.topic}
                     title={task.title}

@@ -2,8 +2,10 @@ import * as S from '../../Common.styled'
 import { routePaths } from '../../lib/routes'
 import { useState } from 'react'
 import { userApi } from '../../api'
+import { useUserContext } from '../../contexts/User/useUserContext'
 
-function Register({ signIn }) {
+function Register() {
+    const { signIn } = useUserContext()
     const [authData, setAuthData] = useState({
         login: '',
         name: '',

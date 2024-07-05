@@ -2,8 +2,11 @@ import { Link } from 'react-router-dom'
 import * as S from './PopExit.styled'
 import { Button } from '../../../Common.styled'
 import { routePaths } from '../../../lib/routes'
+import { useUserContext } from '../../../contexts/User/useUserContext'
 
-function PopExitForm({ signOut }) {
+function PopExitForm() {
+    const { signOut } = useUserContext()
+
     return (
         <S.PopExitForm action="#">
             <S.PopExitFormGroup>

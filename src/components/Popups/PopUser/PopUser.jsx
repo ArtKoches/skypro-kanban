@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom'
 import * as S from './PopUser.styled'
 import { routePaths } from '../../../lib/routes'
+import { useThemeContext } from '../../../contexts/Theme/useThemeContext'
+import { useUserContext } from '../../../contexts/User/useUserContext'
 
-function PopUser({ toggleTheme }) {
+function PopUser() {
+    const { toggleTheme } = useThemeContext()
+    const { user } = useUserContext()
+
     return (
         <S.PopUserSet>
-            <S.PopUserSetName>Ivan Ivanov</S.PopUserSetName>
-            <S.PopUserSetMail>ivan.ivanov@gmail.com</S.PopUserSetMail>
+            <S.PopUserSetName>{user.name}</S.PopUserSetName>
+            <S.PopUserSetMail>{user.login}</S.PopUserSetMail>
 
             <S.PopUserSetTheme>
                 <p>Темная тема</p>
