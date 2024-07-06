@@ -4,17 +4,15 @@ import PopUser from '../Popups/PopUser/PopUser'
 import { Link } from 'react-router-dom'
 import { routePaths } from '../../lib/routes'
 import { useUserContext } from '../../contexts/User/useUserContext'
-import { useCardContext } from '../../contexts/Card/useCardContext'
 
 function HeaderNav() {
     const [isOpen, setIsOpen] = useState(false)
     const toggleDropdownUserInfo = () => setIsOpen(prevState => !prevState)
     const { user } = useUserContext()
-    const { onCardAdd } = useCardContext()
 
     return (
         <S.HeaderNav>
-            <S.HeaderCreateBtn onClick={onCardAdd}>
+            <S.HeaderCreateBtn>
                 <Link to={routePaths.CREATE}>Создать новую задачу</Link>
             </S.HeaderCreateBtn>
 

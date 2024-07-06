@@ -110,14 +110,22 @@ export const CategoriesSubtitle = styled.p`
     line-height: 1;
 `
 
-export const CategoriesThemes = styled.div`
+export const CategoriesTopics = styled.div`
     display: flex;
     flex-wrap: nowrap;
     align-items: flex-start;
     justify-content: flex-start;
+
+    input[type='radio'] {
+        appearance: none;
+
+        &[type='radio']:checked + label {
+            ${topicStyles._active_category}
+        }
+    }
 `
 
-export const CategoriesTheme = styled.label`
+export const TopicLabel = styled.label`
     font-size: 14px;
     font-weight: 600;
     line-height: 14px;
@@ -132,18 +140,14 @@ export const CategoriesTheme = styled.label`
     color: ${({ $topic }) => topicStyles[$topic]};
     background-color: ${({ $topic }) => topicStyles[$topic]};
 
-    input[type='radio'] {
-        appearance: none;
-    }
-
     &:hover {
         ${topicStyles._active_category}
         cursor: pointer;
     }
 
-    &:focus-within {
+    /* &:focus-within {
         ${topicStyles._active_category}
-    }
+    } */
 `
 
 export const FormNewCreateBtn = styled.button`

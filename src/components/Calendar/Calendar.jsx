@@ -2,13 +2,9 @@ import * as S from './Calendar.styled'
 import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import { StyledDayPicker } from './Calendar.styled'
-import { useState } from 'react'
 
-function Calendar({ date }) {
-    const [selected, setSelected] = useState(null)
-
-    date = selected
-    console.log(date)
+function Calendar({ selected, setSelected }) {
+    const fromDate = new Date()
 
     const footer = selected ? (
         <p>
@@ -28,6 +24,7 @@ function Calendar({ date }) {
                 selected={selected}
                 onSelect={setSelected}
                 footer={footer}
+                fromDate={fromDate}
             />
         </S.Calendar>
     )

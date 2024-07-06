@@ -9,10 +9,10 @@ import { useUserContext } from '../../contexts/User/useUserContext'
 import { useCardContext } from '../../contexts/Card/useCardContext'
 
 function Home() {
-    const [isLoading, setIsLoading] = useState(true)
-    const [error, setError] = useState(null)
     const { getToken } = useUserContext()
     const { cards, setCards } = useCardContext()
+    const [isLoading, setIsLoading] = useState(true)
+    const [error, setError] = useState(null)
 
     useEffect(() => {
         kanbanApi

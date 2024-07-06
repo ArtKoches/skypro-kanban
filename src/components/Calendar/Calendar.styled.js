@@ -36,7 +36,7 @@ export const StyledDayPicker = styled(DayPicker)`
     font-size: 12px;
 
     --rdp-cell-size: 28px;
-    --rdp-caption-font-size: 16px;
+    --rdp-caption-font-size: 14px;
     --rdp-accent-color: ${props => props.theme.calendar.hover};
     --rdp-background-color: ${props => props.theme.calendar.hover};
     --rdp-selected-color: ${props => props.theme.calendar.text};

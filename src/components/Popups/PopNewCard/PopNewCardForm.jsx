@@ -1,8 +1,6 @@
 import * as S from './PopNewCard.styled'
 
 function PopNewCardForm({ newCard, onChange }) {
-    console.log(newCard)
-
     return (
         <S.PopNewCardForm action="#">
             <S.FormNewBlock>

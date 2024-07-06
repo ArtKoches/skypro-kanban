@@ -6,17 +6,21 @@ import { color } from '../../../lib/topic'
 import { useState } from 'react'
 import { kanbanApi } from '../../../api'
 import { ErrorMessage } from '../../../Common.styled'
-import { useCardContext } from '../../../contexts/Card/useCardContext'
+import { useUserContext } from '../../../contexts/User/useUserContext'
+import { useNavigate } from 'react-router-dom'
 
 function PopNewCard() {
-    const { updateCard } = useCardContext()
-    const [error, setError] = useState(null)
     const [newCard, setNewCard] = useState({
         title: '',
         topic: '',
         description: '',
-        date: '',
     })
+
+    const [selected, setSelected] = useState(null)
+    const newTask = { ...newCard, date: selected }
+    const { getToken } = useUserContext()
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     function onChange(event) {
         const { name, value } = event.target
@@ -35,42 +39,46 @@ function PopNewCard() {
                 throw new Error('Некорректный ввод/Заполните все поля')
             }
 
-            await kanbanApi.createTask(newCard).then(updateCard)
+            await kanbanApi
+                .createTask({ task: newTask, token: getToken() })
+                .finally(() => navigate(routePaths.MAIN))
         } catch (error) {
             setError(error.message)
         }
     }
 
     return (
-        <S.PopNewCard>
-            <S.PopNewCardContainer>
-                <S.PopNewCardBlock>
-                    <S.PopNewCardContent>
-                        <S.PopNewCardTitle>Создание задачи</S.PopNewCardTitle>
+        <>
+            <S.PopNewCard>
+                <S.PopNewCardContainer>
+                    <S.PopNewCardBlock>
+                        <S.PopNewCardContent>
+                            <S.PopNewCardTitle>
+                                Создание задачи
+                            </S.PopNewCardTitle>
 
-                        <S.PopNewCardClose to={routePaths.MAIN}>
-                            ✖
-                        </S.PopNewCardClose>
+                            <S.PopNewCardClose to={routePaths.MAIN}>
+                                ✖
+                            </S.PopNewCardClose>
 
-                        <S.PopNewCardWrap>
-                            <PopNewCardForm
-                                newCard={newCard}
-                                onChange={onChange}
-                            />
+                            <S.PopNewCardWrap>
+                                <PopNewCardForm
+                                    newCard={newCard}
+                                    onChange={onChange}
+                                />
 
-                            <Calendar date={newCard.date} />
-                        </S.PopNewCardWrap>
+                                <Calendar
+                                    selected={selected}
+                                    setSelected={setSelected}
+                                />
+                            </S.PopNewCardWrap>
 
-                        <S.Categories>
-                            <S.CategoriesSubtitle>
-                                Категория
-                            </S.CategoriesSubtitle>
+                            <S.Categories>
+                                <S.CategoriesSubtitle>
+                                    Категория
+                                </S.CategoriesSubtitle>
 
-                            <S.CategoriesThemes>
-                                <S.CategoriesTheme
-                                    $topic={color.orange}
-                                    htmlFor="radio1"
-                                >
+                                <S.CategoriesTopics>
                                     <input
                                         id="radio1"
                                         type="radio"
@@ -78,13 +86,13 @@ function PopNewCard() {
                                         value="Web Design"
                                         onChange={onChange}
                                     />
-                                    Web Design
-                                </S.CategoriesTheme>
+                                    <S.TopicLabel
+                                        $topic={color.orange}
+                                        htmlFor="radio1"
+                                    >
+                                        Web Design
+                                    </S.TopicLabel>
 
-                                <S.CategoriesTheme
-                                    $topic={color.green}
-                                    htmlFor="radio2"
-                                >
                                     <input
                                         id="radio2"
                                         type="radio"
@@ -92,13 +100,13 @@ function PopNewCard() {
                                         value="Research"
                                         onChange={onChange}
                                     />
-                                    Research
-                                </S.CategoriesTheme>
+                                    <S.TopicLabel
+                                        $topic={color.green}
+                                        htmlFor="radio2"
+                                    >
+                                        Research
+                                    </S.TopicLabel>
 
-                                <S.CategoriesTheme
-                                    $topic={color.purple}
-                                    htmlFor="radio3"
-                                >
                                     <input
                                         id="radio3"
                                         type="radio"
@@ -106,19 +114,24 @@ function PopNewCard() {
                                         value="Copywriting"
                                         onChange={onChange}
                                     />
-                                    Copywriting
-                                </S.CategoriesTheme>
-                            </S.CategoriesThemes>
-                        </S.Categories>
+                                    <S.TopicLabel
+                                        $topic={color.purple}
+                                        htmlFor="radio3"
+                                    >
+                                        Copywriting
+                                    </S.TopicLabel>
+                                </S.CategoriesTopics>
+                            </S.Categories>
 
-                        <ErrorMessage>{error}</ErrorMessage>
-                        <S.FormNewCreateBtn onClick={onSubmit}>
-                            Создать задачу
-                        </S.FormNewCreateBtn>
-                    </S.PopNewCardContent>
-                </S.PopNewCardBlock>
-            </S.PopNewCardContainer>
-        </S.PopNewCard>
+                            <ErrorMessage>{error}</ErrorMessage>
+                            <S.FormNewCreateBtn onClick={onSubmit}>
+                                Создать задачу
+                            </S.FormNewCreateBtn>
+                        </S.PopNewCardContent>
+                    </S.PopNewCardBlock>
+                </S.PopNewCardContainer>
+            </S.PopNewCard>
+        </>
     )
 }
 
