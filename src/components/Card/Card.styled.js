@@ -68,14 +68,14 @@ export const CardTopic = styled.div`
     height: 20px;
     padding: 5px 14px;
     border-radius: 18px;
-    background-color: ${({ $topicColor }) => topicStyles[$topicColor]};
+    background-color: ${({ $topic }) => topicStyles[$topic]};
 `
 
 export const TopicText = styled.p`
     font-size: 10px;
     font-weight: 600;
     line-height: 10px;
-    color: ${({ $topicColor }) => topicStyles[$topicColor]};
+    color: ${({ $topic }) => topicStyles[$topic]};
 `
 
 export const CardBtn = styled.div`

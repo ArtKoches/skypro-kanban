@@ -117,14 +117,11 @@ export const CategoriesThemes = styled.div`
     justify-content: flex-start;
 `
 
-export const CategoriesThemeTitle = styled.p`
+export const CategoriesTheme = styled.label`
     font-size: 14px;
     font-weight: 600;
     line-height: 14px;
     white-space: nowrap;
-`
-
-export const CategoriesTheme = styled.div`
     display: inline-block;
     width: auto;
     height: 30px;
@@ -132,15 +129,20 @@ export const CategoriesTheme = styled.div`
     border-radius: 24px;
     margin-right: 7px;
     opacity: 0.4;
-    background-color: ${({ $topicColor }) => topicStyles[$topicColor]};
+    color: ${({ $topic }) => topicStyles[$topic]};
+    background-color: ${({ $topic }) => topicStyles[$topic]};
+
+    input[type='radio'] {
+        appearance: none;
+    }
 
     &:hover {
         ${topicStyles._active_category}
         cursor: pointer;
     }
 
-    ${CategoriesThemeTitle} {
-        color: ${({ $topicColor }) => topicStyles[$topicColor]};
+    &:focus-within {
+        ${topicStyles._active_category}
     }
 `
 

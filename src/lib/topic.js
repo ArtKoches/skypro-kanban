@@ -31,3 +31,9 @@ export const topicCategory = {
     Research: '_green',
     Copywriting: '_purple',
 }
+
+export const color = {
+    orange: topicCategory['Web Design'],
+    green: topicCategory['Research'],
+    purple: topicCategory['Copywriting'],
+}

@@ -22,7 +22,7 @@ function PopBrowse() {
                                 </S.PopBrowse.title>
 
                                 <S.PopBrowse.topic_category
-                                    $topicColor={topicCategory['Web Design']}
+                                    $topic={topicCategory['Web Design']}
                                 >
                                     <p>Web Design</p>
                                 </S.PopBrowse.topic_category>
@@ -67,7 +67,7 @@ function PopBrowse() {
                                 </S.PopBrowse.down_topic_subtitle>
 
                                 <S.PopBrowse.down_topic_category
-                                    $topicColor={topicCategory['Web Design']}
+                                    $topic={topicCategory['Web Design']}
                                 >
                                     <p>Web Design</p>
                                 </S.PopBrowse.down_topic_category>

@@ -84,7 +84,7 @@ export const PopBrowse = {
         border-radius: 24px;
         margin-right: 7px;
         opacity: 1;
-        background-color: ${({ $topicColor }) => topicStyles[$topicColor]};
+        background-color: ${({ $topic }) => topicStyles[$topic]};
 
         @media screen and (max-width: ${breakpoints.md}px) {
             display: none;
@@ -95,7 +95,7 @@ export const PopBrowse = {
             font-weight: 600;
             line-height: 14px;
             white-space: nowrap;
-            color: ${$topicColor => topicStyles[$topicColor]};
+            color: ${$topic => topicStyles[$topic]};
         }
     `,
 
@@ -160,14 +160,14 @@ export const PopBrowse = {
         border-radius: 24px;
         margin-right: 7px;
         opacity: 1;
-        background-color: ${({ $topicColor }) => topicStyles[$topicColor]};
+        background-color: ${({ $topic }) => topicStyles[$topic]};
 
         p {
             font-size: 14px;
             font-weight: 600;
             line-height: 14px;
             white-space: nowrap;
-            color: ${$topicColor => topicStyles[$topicColor]};
+            color: ${$topic => topicStyles[$topic]};
         }
     `,
 

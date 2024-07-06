@@ -8,7 +8,7 @@ function Card({ id, topic, title, date }) {
             <S.CardItem>
                 <S.CardWrapper>
                     <S.CardGroup>
-                        <S.CardTopic $topicColor={topicCategory[topic]}>
+                        <S.CardTopic $topic={topicCategory[topic]}>
                             <S.TopicText>{topic}</S.TopicText>
                         </S.CardTopic>
 

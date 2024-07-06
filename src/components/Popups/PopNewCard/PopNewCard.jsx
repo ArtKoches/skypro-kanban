@@ -2,7 +2,7 @@ import * as S from './PopNewCard.styled'
 import PopNewCardForm from './PopNewCardForm'
 import Calendar from '../../Calendar/Calendar'
 import { routePaths } from '../../../lib/routes'
-import { topicCategory } from '../../../lib/topic'
+import { color } from '../../../lib/topic'
 import { useState } from 'react'
 import { kanbanApi } from '../../../api'
 import { ErrorMessage } from '../../../Common.styled'
@@ -27,7 +27,11 @@ function PopNewCard() {
         try {
             event.preventDefault()
 
-            if (!newCard.title.trim() || !newCard.description.trim()) {
+            if (
+                !newCard.title.trim() ||
+                !newCard.topic.trim() ||
+                !newCard.description.trim()
+            ) {
                 throw new Error('Некорректный ввод/Заполните все поля')
             }
 
@@ -64,27 +68,45 @@ function PopNewCard() {
 
                             <S.CategoriesThemes>
                                 <S.CategoriesTheme
-                                    $topicColor={topicCategory['Web Design']}
+                                    $topic={color.orange}
+                                    htmlFor="radio1"
                                 >
-                                    <S.CategoriesThemeTitle>
-                                        Web Design
-                                    </S.CategoriesThemeTitle>
+                                    <input
+                                        id="radio1"
+                                        type="radio"
+                                        name="topic"
+                                        value="Web Design"
+                                        onChange={onChange}
+                                    />
+                                    Web Design
                                 </S.CategoriesTheme>
 
                                 <S.CategoriesTheme
-                                    $topicColor={topicCategory['Research']}
+                                    $topic={color.green}
+                                    htmlFor="radio2"
                                 >
-                                    <S.CategoriesThemeTitle>
-                                        Research
-                                    </S.CategoriesThemeTitle>
+                                    <input
+                                        id="radio2"
+                                        type="radio"
+                                        name="topic"
+                                        value="Research"
+                                        onChange={onChange}
+                                    />
+                                    Research
                                 </S.CategoriesTheme>
 
                                 <S.CategoriesTheme
-                                    $topicColor={topicCategory['Copywriting']}
+                                    $topic={color.purple}
+                                    htmlFor="radio3"
                                 >
-                                    <S.CategoriesThemeTitle>
-                                        Copywriting
-                                    </S.CategoriesThemeTitle>
+                                    <input
+                                        id="radio3"
+                                        type="radio"
+                                        name="topic"
+                                        value="Copywriting"
+                                        onChange={onChange}
+                                    />
+                                    Copywriting
                                 </S.CategoriesTheme>
                             </S.CategoriesThemes>
                         </S.Categories>
