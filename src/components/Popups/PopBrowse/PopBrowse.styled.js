@@ -334,6 +334,7 @@ export const FormBrowse = {
         letter-spacing: -0.14px;
         margin-top: 14px;
         height: 200px;
+        color: ${props => props.theme.browsePopup.title};
 
         &::placeholder {
             font-weight: 400;

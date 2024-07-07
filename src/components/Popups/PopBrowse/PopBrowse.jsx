@@ -1,14 +1,35 @@
 import * as S from './PopBrowse.styled'
 import PopBrowseForm from './PopBrowseForm'
 import Calendar from '../../Calendar/Calendar'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useState } from 'react'
 import { routePaths } from '../../../lib/routes'
 import { topicCategory } from '../../../lib/topic'
-// import { useCardContext } from '../../../contexts/Card/useCardContext'
+import { ErrorMessage } from '../../../Common.styled'
+import { kanbanApi } from '../../../api'
+import { useUserContext } from '../../../contexts/User/useUserContext'
+import { useCardContext } from '../../../contexts/Card/useCardContext'
 
 function PopBrowse() {
     const { id } = useParams()
-    // const { cards, setCards } = useCardContext()
+    const { getToken } = useUserContext()
+    const { findTask } = useCardContext()
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
+
+    const foundTask = findTask(id)
+
+    async function onTaskDelete(event) {
+        try {
+            event.preventDefault()
+
+            await kanbanApi
+                .deleteTask({ taskId: id, token: getToken() })
+                .finally(() => navigate(routePaths.MAIN))
+        } catch (error) {
+            setError(error.message)
+        }
+    }
 
     return (
         <>
@@ -18,13 +39,13 @@ function PopBrowse() {
                         <S.PopBrowse.content>
                             <S.PopBrowse.top_block>
                                 <S.PopBrowse.title>
-                                    Название задачи:{id}
+                                    {foundTask?.title}
                                 </S.PopBrowse.title>
 
                                 <S.PopBrowse.topic_category
-                                    $topic={topicCategory['Web Design']}
+                                    $topic={topicCategory[foundTask?.topic]}
                                 >
-                                    <p>Web Design</p>
+                                    <p>{foundTask?.topic}</p>
                                 </S.PopBrowse.topic_category>
                             </S.PopBrowse.top_block>
 
@@ -34,11 +55,11 @@ function PopBrowse() {
                                 </S.PopBrowse.status_subtitle>
 
                                 <S.PopBrowse.topic_statuses>
-                                    <S.PopBrowse.topic_status $hide>
-                                        <p>Без статуса</p>
+                                    <S.PopBrowse.topic_status $current>
+                                        <p>{foundTask?.status}</p>
                                     </S.PopBrowse.topic_status>
 
-                                    <S.PopBrowse.topic_status $current>
+                                    <S.PopBrowse.topic_status $hide>
                                         <p>Нужно сделать</p>
                                     </S.PopBrowse.topic_status>
 
@@ -57,8 +78,12 @@ function PopBrowse() {
                             </S.PopBrowse.status>
 
                             <S.PopBrowse.wrap>
-                                <PopBrowseForm />
-                                <Calendar />
+                                <PopBrowseForm foundTask={foundTask} />
+
+                                <Calendar
+                                    foundTask={foundTask}
+                                    disabled={true}
+                                />
                             </S.PopBrowse.wrap>
 
                             <S.PopBrowse.down_topic>
@@ -67,9 +92,9 @@ function PopBrowse() {
                                 </S.PopBrowse.down_topic_subtitle>
 
                                 <S.PopBrowse.down_topic_category
-                                    $topic={topicCategory['Web Design']}
+                                    $topic={topicCategory[foundTask?.topic]}
                                 >
-                                    <p>Web Design</p>
+                                    <p>{foundTask?.topic}</p>
                                 </S.PopBrowse.down_topic_category>
                             </S.PopBrowse.down_topic>
 
@@ -79,9 +104,11 @@ function PopBrowse() {
                                         <a href="#">Редактировать задачу</a>
                                     </button>
 
-                                    <button>
-                                        <a href="#">Удалить задачу</a>
+                                    <button onClick={onTaskDelete}>
+                                        Удалить задачу
                                     </button>
+
+                                    <ErrorMessage>{error}</ErrorMessage>
                                 </S.PopBrowseButtons.btn_group>
 
                                 <S.PopBrowseButtons.btn_close>
@@ -99,8 +126,10 @@ function PopBrowse() {
                                         <a href="#">Отменить</a>
                                     </S.PopBrowseButtons.btn_cancel>
 
-                                    <S.PopBrowseButtons.btn_delete>
-                                        <a href="#">Удалить задачу</a>
+                                    <S.PopBrowseButtons.btn_delete
+                                        onClick={onTaskDelete}
+                                    >
+                                        Удалить задачу
                                     </S.PopBrowseButtons.btn_delete>
                                 </S.PopBrowseButtons.btn_edit_group>
 

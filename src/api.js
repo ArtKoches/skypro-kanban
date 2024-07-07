@@ -103,4 +103,28 @@ export const kanbanApi = {
             throw new Error(error.message)
         }
     },
+
+    deleteTask: async function removeTask({ token, taskId }) {
+        try {
+            const response = await fetch(`${baseKanbanHost}/${taskId}`, {
+                method: 'DELETE',
+                headers: {
+                    Authorization: token,
+                },
+            })
+
+            if (!response.ok) {
+                throw new Error('Ошибка сервера')
+            }
+
+            const data = await response.json()
+            return data.tasks
+        } catch (error) {
+            if (error.message === 'Failed to fetch') {
+                throw new Error('Проверьте интернет соединение')
+            }
+
+            throw new Error(error.message)
+        }
+    },
 }

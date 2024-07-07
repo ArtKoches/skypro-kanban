@@ -1,6 +1,6 @@
 import * as S from './PopBrowse.styled.js'
 
-function PopBrowseForm() {
+function PopBrowseForm({ foundTask }) {
     return (
         <>
             <S.FormBrowse.form action="#">
@@ -14,7 +14,7 @@ function PopBrowseForm() {
                         id="textArea01"
                         readOnly
                         placeholder="Введите описание задачи..."
-                        defaultValue={''}
+                        defaultValue={foundTask?.description}
                     />
                 </S.FormBrowse.form_block>
             </S.FormBrowse.form>

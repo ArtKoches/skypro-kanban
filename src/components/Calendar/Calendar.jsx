@@ -3,17 +3,30 @@ import { format } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import { StyledDayPicker } from './Calendar.styled'
 
-function Calendar({ selected, setSelected }) {
-    const fromDate = new Date()
+function Calendar({ disabled, selected, setSelected, foundTask }) {
+    const footer = () => {
+        if (disabled) {
+            return (
+                <p>
+                    Срок исполнения: {''}
+                    <span>
+                        {new Date(foundTask?.date).toLocaleDateString()}
+                    </span>
+                </p>
+            )
+        } else if (selected) {
+            return (
+                <p>
+                    Срок исполнения: {''}
+                    <span>{format(selected, 'dd.MM.yy.', { locale: ru })}</span>
+                </p>
+            )
+        } else {
+            return <p>Выберите срок исполнения.</p>
+        }
+    }
 
-    const footer = selected ? (
-        <p>
-            Срок исполнения:{' '}
-            <span>{format(selected, 'dd.MM.yy.', { locale: ru })}</span>{' '}
-        </p>
-    ) : (
-        <p>Выберите срок исполнения.</p>
-    )
+    const fromDate = new Date()
 
     return (
         <S.Calendar>
@@ -23,8 +36,9 @@ function Calendar({ selected, setSelected }) {
                 mode="single"
                 selected={selected}
                 onSelect={setSelected}
-                footer={footer}
+                footer={footer()}
                 fromDate={fromDate}
+                disabled={disabled}
             />
         </S.Calendar>
     )
