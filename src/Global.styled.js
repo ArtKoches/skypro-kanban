@@ -34,7 +34,7 @@ body {
     height: 100%;
     font-family: 'Roboto', Arial, Helvetica, sans-serif;
     color: ${props => props.theme.body.color};
-    transition: all 0.25s linear; // Плавный переход цвета при смене темы
+    transition: all .3s linear; // Плавный переход цвета при смене темы            
 }
 
 div,

@@ -112,24 +112,33 @@ export const PopBrowse = {
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: flex-start;
+
+        input[type='radio'] {
+            appearance: none;
+
+            &[type='radio']:checked + label {
+                ${topicStyles._gray}
+            }
+        }
     `,
 
-    topic_status: styled.div`
+    topic_status: styled.label`
         border-radius: 24px;
         border: 0.7px solid rgba(148, 166, 190, 0.4);
         color: #94a6be;
         padding: 11px 14px 10px;
         margin-right: 7px;
         margin-bottom: 7px;
+        font-size: 14px;
+        line-height: 1;
+        letter-spacing: -0.14px;
 
-        ${props => (props.$hide ? topicStyles._hide : '')}
-        ${props => (props.$current ? topicStyles._gray : '')}
-
-        p {
-            font-size: 14px;
-            line-height: 1;
-            letter-spacing: -0.14px;
+        &:hover {
+            ${topicStyles._gray}
+            cursor: pointer;
         }
+
+        ${props => (props.$current ? topicStyles._gray : '')}
     `,
 
     wrap: styled.div`
@@ -186,8 +195,6 @@ export const PopBrowseButtons = {
         flex-wrap: wrap;
         align-items: flex-start;
         justify-content: space-between;
-
-        ${props => (props.$hide ? topicStyles._hide : '')}
 
         button {
             height: 30px;
@@ -342,6 +349,7 @@ export const FormBrowse = {
             line-height: 1px;
             color: #94a6be;
             letter-spacing: -0.14px;
+            padding-top: 7px;
         }
 
         @media screen and (max-width: ${breakpoints.md}px) {

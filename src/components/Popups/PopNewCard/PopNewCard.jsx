@@ -10,24 +10,22 @@ import { useUserContext } from '../../../contexts/User/useUserContext'
 import { useNavigate } from 'react-router-dom'
 
 function PopNewCard() {
+    const { getToken } = useUserContext()
+    const [error, setError] = useState(null)
+    const navigate = useNavigate()
     const [newCard, setNewCard] = useState({
         title: '',
         topic: '',
         description: '',
+        date: new Date(),
     })
-
-    const [selected, setSelected] = useState(null)
-    const newTask = { ...newCard, date: selected }
-    const { getToken } = useUserContext()
-    const [error, setError] = useState(null)
-    const navigate = useNavigate()
 
     function onChange(event) {
         const { name, value } = event.target
         setNewCard({ ...newCard, [name]: value })
     }
 
-    async function onSubmit(event) {
+    async function onTaskCreate(event) {
         try {
             event.preventDefault()
 
@@ -40,7 +38,7 @@ function PopNewCard() {
             }
 
             await kanbanApi
-                .createTask({ task: newTask, token: getToken() })
+                .createTask({ task: newCard, token: getToken() })
                 .finally(() => navigate(routePaths.MAIN))
         } catch (error) {
             setError(error.message)
@@ -68,8 +66,10 @@ function PopNewCard() {
                                 />
 
                                 <Calendar
-                                    selected={selected}
-                                    setSelected={setSelected}
+                                    selected={newCard.date}
+                                    setSelected={date =>
+                                        setNewCard({ ...newCard, date })
+                                    }
                                 />
                             </S.PopNewCardWrap>
 
@@ -124,7 +124,7 @@ function PopNewCard() {
                             </S.Categories>
 
                             <ErrorMessage>{error}</ErrorMessage>
-                            <S.FormNewCreateBtn onClick={onSubmit}>
+                            <S.FormNewCreateBtn onClick={onTaskCreate}>
                                 Создать задачу
                             </S.FormNewCreateBtn>
                         </S.PopNewCardContent>

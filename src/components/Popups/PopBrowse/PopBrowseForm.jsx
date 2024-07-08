@@ -1,6 +1,6 @@
 import * as S from './PopBrowse.styled.js'
 
-function PopBrowseForm({ foundTask }) {
+function PopBrowseForm({ foundTask, editTask, isEdit, onChange }) {
     return (
         <>
             <S.FormBrowse.form action="#">
@@ -10,11 +10,17 @@ function PopBrowseForm({ foundTask }) {
                     </S.FormBrowse.form_subtitle>
 
                     <S.FormBrowse.form_textarea
-                        name="text"
+                        name="description"
                         id="textArea01"
-                        readOnly
+                        readOnly={!isEdit ? 'readonly' : ''}
                         placeholder="Введите описание задачи..."
-                        defaultValue={foundTask?.description}
+                        // defaultValue={foundTask?.description}
+                        value={
+                            !isEdit
+                                ? foundTask?.description
+                                : editTask.description
+                        }
+                        onChange={onChange}
                     />
                 </S.FormBrowse.form_block>
             </S.FormBrowse.form>

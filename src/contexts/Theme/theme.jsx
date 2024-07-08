@@ -1,8 +1,10 @@
 import { createContext, useLayoutEffect, useState } from 'react'
+import { darkTheme, lightTheme } from '../../lib/theme'
+import { ThemeProvider } from 'styled-components'
 
 export const ThemeContext = createContext(null)
 
-export const ThemeProvider = ({ children }) => {
+export const UseThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
 
     useLayoutEffect(() => localStorage.setItem('theme', theme), [theme])
@@ -16,8 +18,12 @@ export const ThemeProvider = ({ children }) => {
     }
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme, toggleLogoPath }}>
-            {children}
-        </ThemeContext.Provider>
+        <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+            <ThemeContext.Provider
+                value={{ theme, toggleTheme, toggleLogoPath }}
+            >
+                {children}
+            </ThemeContext.Provider>
+        </ThemeProvider>
     )
 }

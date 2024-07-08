@@ -4,6 +4,8 @@ import { ru } from 'date-fns/locale'
 import { StyledDayPicker } from './Calendar.styled'
 
 function Calendar({ disabled, selected, setSelected, foundTask }) {
+    const fromDate = new Date()
+
     const footer = () => {
         if (disabled) {
             return (
@@ -25,8 +27,6 @@ function Calendar({ disabled, selected, setSelected, foundTask }) {
             return <p>Выберите срок исполнения.</p>
         }
     }
-
-    const fromDate = new Date()
 
     return (
         <S.Calendar>
