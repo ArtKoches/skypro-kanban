@@ -64,6 +64,8 @@ export const PopBrowse = {
 
     top_block: styled.div`
         display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
         align-items: center;
         justify-content: space-between;
         margin-bottom: 18px;
@@ -74,6 +76,28 @@ export const PopBrowse = {
         font-size: 20px;
         font-weight: 600;
         line-height: 24px;
+    `,
+
+    title_edit: styled.input`
+        width: 100%;
+        outline: none;
+        padding: 14px;
+        background: #151419;
+        border: 0.7px solid rgba(148, 166, 190, 0.4);
+        border-radius: 8px;
+        font-size: 14px;
+        line-height: 1;
+        letter-spacing: -0.14px;
+        color: ${props => props.theme.newCardPopup.title};
+
+        &::placeholder {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1px;
+            color: #94a6be;
+            letter-spacing: -0.14px;
+            font-family: 'Roboto', sans-serif;
+        }
     `,
 
     topic_category: styled.div`

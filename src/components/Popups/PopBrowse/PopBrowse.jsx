@@ -4,11 +4,12 @@ import Calendar from '../../Calendar/Calendar'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { useState } from 'react'
 import { routePaths } from '../../../lib/routes'
-import { topicCategory } from '../../../lib/topic'
+import { color, topicCategory } from '../../../lib/topic'
 import { ErrorMessage } from '../../../Common.styled'
 import { kanbanApi } from '../../../api'
 import { useUserContext } from '../../../contexts/User/useUserContext'
 import { useCardContext } from '../../../contexts/Card/useCardContext'
+import { CategoriesTopics, TopicLabel } from '../PopNewCard/PopNewCard.styled'
 
 function PopBrowse() {
     const navigate = useNavigate()
@@ -19,6 +20,7 @@ function PopBrowse() {
     const [isEdit, setIsEdit] = useState(false)
     const foundTask = findTask(id)
     const [editTask, setEditTask] = useState({
+        title: '',
         status: '',
         description: '',
         date: new Date(),
@@ -45,6 +47,18 @@ function PopBrowse() {
         }
     }
 
+    async function onTaskEdit(event) {
+        try {
+            event.preventDefault()
+
+            await kanbanApi
+                .redactTask({ task: editTask, taskId: id, token: getToken() })
+                .finally(() => navigate(routePaths.MAIN))
+        } catch (error) {
+            setError(error.message)
+        }
+    }
+
     return (
         <>
             <S.PopBrowse.wrapper>
@@ -52,15 +66,74 @@ function PopBrowse() {
                     <S.PopBrowse.block>
                         <S.PopBrowse.content>
                             <S.PopBrowse.top_block>
-                                <S.PopBrowse.title>
-                                    {foundTask?.title}
-                                </S.PopBrowse.title>
+                                {!isEdit ? (
+                                    <S.PopBrowse.title>
+                                        {foundTask?.title}
+                                    </S.PopBrowse.title>
+                                ) : (
+                                    <S.PopBrowse.title_edit
+                                        type="text"
+                                        name="title"
+                                        id="formTitle"
+                                        readOnly={!isEdit ? 'readonly' : ''}
+                                        placeholder="Введите название задачи..."
+                                        autoFocus
+                                        value={editTask.title}
+                                        onChange={onChange}
+                                    />
+                                )}
 
-                                <S.PopBrowse.topic_category
-                                    $topic={topicCategory[foundTask?.topic]}
-                                >
-                                    <p>{foundTask?.topic}</p>
-                                </S.PopBrowse.topic_category>
+                                {!isEdit ? (
+                                    <S.PopBrowse.topic_category
+                                        $topic={topicCategory[foundTask?.topic]}
+                                    >
+                                        <p>{foundTask?.topic}</p>
+                                    </S.PopBrowse.topic_category>
+                                ) : (
+                                    <CategoriesTopics>
+                                        <input
+                                            id="radio1"
+                                            type="radio"
+                                            name="topic"
+                                            value="Web Design"
+                                            onChange={onChange}
+                                        />
+                                        <TopicLabel
+                                            $topic={color.orange}
+                                            htmlFor="radio1"
+                                        >
+                                            Web Design
+                                        </TopicLabel>
+
+                                        <input
+                                            id="radio2"
+                                            type="radio"
+                                            name="topic"
+                                            value="Research"
+                                            onChange={onChange}
+                                        />
+                                        <TopicLabel
+                                            $topic={color.green}
+                                            htmlFor="radio2"
+                                        >
+                                            Research
+                                        </TopicLabel>
+
+                                        <input
+                                            id="radio3"
+                                            type="radio"
+                                            name="topic"
+                                            value="Copywriting"
+                                            onChange={onChange}
+                                        />
+                                        <TopicLabel
+                                            $topic={color.purple}
+                                            htmlFor="radio3"
+                                        >
+                                            Copywriting
+                                        </TopicLabel>
+                                    </CategoriesTopics>
+                                )}
                             </S.PopBrowse.top_block>
 
                             <S.PopBrowse.status>
@@ -187,8 +260,10 @@ function PopBrowse() {
                             ) : (
                                 <S.PopBrowseButtons.btn_browse>
                                     <S.PopBrowseButtons.btn_edit_group>
-                                        <S.PopBrowseButtons.btn_save>
-                                            <a href="#">Сохранить</a>
+                                        <S.PopBrowseButtons.btn_save
+                                            onClick={onTaskEdit}
+                                        >
+                                            Сохранить
                                         </S.PopBrowseButtons.btn_save>
 
                                         <S.PopBrowseButtons.btn_cancel

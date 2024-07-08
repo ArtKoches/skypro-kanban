@@ -1,24 +1,26 @@
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Button } from '../../Common.styled'
+import { Link } from 'react-router-dom'
 
 export const ErrorPage = styled.div`
-    width: 100%;
-    height: 100%;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-top: 30px;
-    padding-bottom: 100px;
-    background-color: #ffffff;
-`
-
-export const ErrorPageTitle = styled.h1`
-    color: #fd6051;
+    background-color: #f0f0f0;
 `
 
 export const ErrorPageImg = styled.img`
-    width: 70%;
-    height: 70%;
+    width: 100%;
+    height: 100%;
+`
+
+export const ErrorPageBtn = styled(Button)`
+    position: fixed;
+    border: 1px solid black;
+    background-color: #9b755c;
+    border-radius: 20px;
+    height: 36px;
 `
 
 export const ErrorPageLink = styled(Link)`

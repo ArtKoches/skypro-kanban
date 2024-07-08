@@ -127,4 +127,29 @@ export const kanbanApi = {
             throw new Error(error.message)
         }
     },
+
+    redactTask: async function editTask({ token, task, taskId }) {
+        try {
+            const response = await fetch(`${baseKanbanHost}/${taskId}`, {
+                method: 'PUT',
+                headers: {
+                    Authorization: token,
+                },
+                body: JSON.stringify(task),
+            })
+
+            if (!response.ok) {
+                throw new Error('Ошибка сервера')
+            }
+
+            const data = await response.json()
+            return data.tasks
+        } catch (error) {
+            if (error.message === 'Failed to fetch') {
+                throw new Error('Проверьте интернет соединение')
+            }
+
+            throw new Error(error.message)
+        }
+    },
 }

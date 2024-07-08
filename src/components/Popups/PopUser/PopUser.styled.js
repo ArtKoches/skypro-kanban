@@ -1,5 +1,6 @@
 import { Hover03 } from '../../../Common.styled'
 import styled from 'styled-components'
+import { breakpoints } from '../../../lib/breakpoints'
 
 export const PopUserSet = styled.div`
     display: block;
@@ -15,6 +16,14 @@ export const PopUserSet = styled.div`
     padding: 34px;
     text-align: center;
     z-index: 2;
+
+    @media screen and (max-width: ${breakpoints.sm}px) {
+        z-index: 7;
+    }
+
+    @media screen and (max-width: ${breakpoints.md}px) {
+        z-index: 7;
+    }
 `
 
 export const PopUserSetName = styled.p`

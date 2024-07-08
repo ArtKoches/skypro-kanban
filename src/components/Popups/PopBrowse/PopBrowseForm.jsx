@@ -14,7 +14,6 @@ function PopBrowseForm({ foundTask, editTask, isEdit, onChange }) {
                         id="textArea01"
                         readOnly={!isEdit ? 'readonly' : ''}
                         placeholder="Введите описание задачи..."
-                        // defaultValue={foundTask?.description}
                         value={
                             !isEdit
                                 ? foundTask?.description

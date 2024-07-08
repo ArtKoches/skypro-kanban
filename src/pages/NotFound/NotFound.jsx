@@ -1,19 +1,16 @@
-import { routePaths } from '../../lib/routes'
-import { Button } from '../../Common.styled'
 import * as S from './NotFound.styled'
+import { routePaths } from '../../lib/routes'
 
 function NotFound() {
     return (
         <S.ErrorPage>
-            <S.ErrorPageTitle>Страница не найдена</S.ErrorPageTitle>
+            <S.ErrorPageImg src="/images/404_error.jpg" />
 
-            <S.ErrorPageImg src="/images/error_404.jpg" />
-
-            <Button>
+            <S.ErrorPageBtn>
                 <S.ErrorPageLink to={routePaths.MAIN}>
                     На главную
                 </S.ErrorPageLink>
-            </Button>
+            </S.ErrorPageBtn>
         </S.ErrorPage>
     )
 }
