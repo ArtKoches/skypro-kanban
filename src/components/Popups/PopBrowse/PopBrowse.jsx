@@ -9,7 +9,6 @@ import { ErrorMessage } from '../../../Common.styled'
 import { kanbanApi } from '../../../api'
 import { useUserContext } from '../../../contexts/User/useUserContext'
 import { useCardContext } from '../../../contexts/Card/useCardContext'
-import { CategoriesTopics, TopicLabel } from '../PopNewCard/PopNewCard.styled'
 
 function PopBrowse() {
     const navigate = useNavigate()
@@ -21,6 +20,7 @@ function PopBrowse() {
     const foundTask = findTask(id)
     const [editTask, setEditTask] = useState({
         title: '',
+        topic: '',
         status: '',
         description: '',
         date: new Date(),
@@ -50,6 +50,16 @@ function PopBrowse() {
     async function onTaskEdit(event) {
         try {
             event.preventDefault()
+
+            if (
+                !editTask.title.trim() ||
+                !editTask.topic.trim() ||
+                !editTask.status.trim() ||
+                !editTask.description.trim() ||
+                !editTask.date
+            ) {
+                throw new Error('Некорректный ввод/Заполните все поля')
+            }
 
             await kanbanApi
                 .redactTask({ task: editTask, taskId: id, token: getToken() })
@@ -90,7 +100,7 @@ function PopBrowse() {
                                         <p>{foundTask?.topic}</p>
                                     </S.PopBrowse.topic_category>
                                 ) : (
-                                    <CategoriesTopics>
+                                    <S.PopBrowse.topic_edit>
                                         <input
                                             id="radio1"
                                             type="radio"
@@ -98,12 +108,12 @@ function PopBrowse() {
                                             value="Web Design"
                                             onChange={onChange}
                                         />
-                                        <TopicLabel
+                                        <S.PopBrowse.topic_label
                                             $topic={color.orange}
                                             htmlFor="radio1"
                                         >
                                             Web Design
-                                        </TopicLabel>
+                                        </S.PopBrowse.topic_label>
 
                                         <input
                                             id="radio2"
@@ -112,12 +122,12 @@ function PopBrowse() {
                                             value="Research"
                                             onChange={onChange}
                                         />
-                                        <TopicLabel
+                                        <S.PopBrowse.topic_label
                                             $topic={color.green}
                                             htmlFor="radio2"
                                         >
                                             Research
-                                        </TopicLabel>
+                                        </S.PopBrowse.topic_label>
 
                                         <input
                                             id="radio3"
@@ -126,13 +136,13 @@ function PopBrowse() {
                                             value="Copywriting"
                                             onChange={onChange}
                                         />
-                                        <TopicLabel
+                                        <S.PopBrowse.topic_label
                                             $topic={color.purple}
                                             htmlFor="radio3"
                                         >
                                             Copywriting
-                                        </TopicLabel>
-                                    </CategoriesTopics>
+                                        </S.PopBrowse.topic_label>
+                                    </S.PopBrowse.topic_edit>
                                 )}
                             </S.PopBrowse.top_block>
 

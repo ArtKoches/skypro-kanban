@@ -108,6 +108,7 @@ export const CardTitle = styled.h3`
     line-height: 18px;
     color: ${props => props.theme.card.title};
     margin-bottom: 10px;
+    word-break: break-all;
 `
 
 export const CardDate = styled.div`

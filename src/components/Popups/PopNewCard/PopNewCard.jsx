@@ -32,7 +32,8 @@ function PopNewCard() {
             if (
                 !newCard.title.trim() ||
                 !newCard.topic.trim() ||
-                !newCard.description.trim()
+                !newCard.description.trim() ||
+                !newCard.date
             ) {
                 throw new Error('Некорректный ввод/Заполните все поля')
             }

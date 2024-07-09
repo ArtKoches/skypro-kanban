@@ -76,6 +76,7 @@ export const PopBrowse = {
         font-size: 20px;
         font-weight: 600;
         line-height: 24px;
+        word-break: break-all;
     `,
 
     title_edit: styled.input`
@@ -120,6 +121,42 @@ export const PopBrowse = {
             line-height: 14px;
             white-space: nowrap;
             color: ${$topic => topicStyles[$topic]};
+        }
+    `,
+
+    topic_edit: styled.div`
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        input[type='radio'] {
+            appearance: none;
+
+            &[type='radio']:checked + label {
+                ${topicStyles._active_category}
+            }
+        }
+    `,
+
+    topic_label: styled.label`
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 14px;
+        white-space: nowrap;
+        display: inline-block;
+        width: auto;
+        height: 30px;
+        padding: 8px 20px;
+        border-radius: 24px;
+        margin-right: 7px;
+        opacity: 0.4;
+        color: ${({ $topic }) => topicStyles[$topic]};
+        background-color: ${({ $topic }) => topicStyles[$topic]};
+
+        &:hover {
+            ${topicStyles._active_category}
+            cursor: pointer;
         }
     `,
 
