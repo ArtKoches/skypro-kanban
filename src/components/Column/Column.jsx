@@ -15,6 +15,7 @@ function Column({ title, tasks }) {
                     id={task._id}
                     topic={task.topic}
                     title={task.title}
+                    status={task.status}
                     date={format(new Date(task.date), 'dd.MM.yy')}
                 />
             ))}
