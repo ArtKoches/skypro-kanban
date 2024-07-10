@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 export const ErrorMessage = styled.p`
     color: red;
+    text-align: center;
+    word-break: break-all;
 `
 
 export const Wrapper = styled.div`
@@ -171,7 +173,8 @@ export const ModalInput = styled.input`
     width: 100%;
     min-width: 100%;
     border-radius: 8px;
-    border: 0.7px solid rgba(148, 166, 190, 0.4);
+    border: 0.7px solid
+        ${props => (props.$error ? 'red' : 'rgba(148, 166, 190, 0.4)')};
     outline: none;
     padding: 10px 8px;
     color: ${props => props.theme.userAuth.color};
@@ -200,7 +203,7 @@ export const ModalRegInput = styled(ModalInput)`
 export const ModalBtn = styled.button`
     width: 100%;
     height: 30px;
-    background-color: #565eef;
+    background-color: ${props => (props.$error ? '#94A6BE' : '#565eef')};
     border-radius: 4px;
     margin-top: 20px;
     margin-bottom: 20px;

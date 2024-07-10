@@ -9,6 +9,7 @@ import { ErrorMessage } from '../../../Common.styled'
 import { kanbanApi } from '../../../api'
 import { useUserContext } from '../../../contexts/User/useUserContext'
 import { useCardContext } from '../../../contexts/Card/useCardContext'
+import { inputErrorHandler } from '../../../lib/helpers'
 
 function PopBrowse() {
     const navigate = useNavigate()
@@ -16,8 +17,8 @@ function PopBrowse() {
     const { getToken } = useUserContext()
     const { findTask } = useCardContext()
     const [error, setError] = useState(null)
-    const [isEdit, setIsEdit] = useState(false)
     const foundTask = findTask(id)
+    const [isEdit, setIsEdit] = useState(false)
     const [editTask, setEditTask] = useState({
         title: '',
         topic: '',
@@ -39,6 +40,10 @@ function PopBrowse() {
         try {
             event.preventDefault()
 
+            if (error) {
+                setError(null)
+            }
+
             await kanbanApi
                 .deleteTask({ taskId: id, token: getToken() })
                 .finally(() => navigate(routePaths.MAIN))
@@ -50,15 +55,10 @@ function PopBrowse() {
     async function onTaskEdit(event) {
         try {
             event.preventDefault()
+            inputErrorHandler.editTask({ task: editTask })
 
-            if (
-                !editTask.title.trim() ||
-                !editTask.topic.trim() ||
-                !editTask.status.trim() ||
-                !editTask.description.trim() ||
-                !editTask.date
-            ) {
-                throw new Error('Некорректный ввод/Заполните все поля')
+            if (error) {
+                setError(null)
             }
 
             await kanbanApi
@@ -257,8 +257,6 @@ function PopBrowse() {
                                         <button onClick={onTaskDelete}>
                                             Удалить задачу
                                         </button>
-
-                                        <ErrorMessage>{error}</ErrorMessage>
                                     </S.PopBrowseButtons.btn_group>
 
                                     <S.PopBrowseButtons.btn_close>
@@ -266,6 +264,8 @@ function PopBrowse() {
                                             Закрыть
                                         </Link>
                                     </S.PopBrowseButtons.btn_close>
+
+                                    <ErrorMessage>{error}</ErrorMessage>
                                 </S.PopBrowseButtons.btn_browse>
                             ) : (
                                 <S.PopBrowseButtons.btn_browse>
@@ -287,8 +287,6 @@ function PopBrowse() {
                                         >
                                             Удалить задачу
                                         </S.PopBrowseButtons.btn_delete>
-
-                                        <ErrorMessage>{error}</ErrorMessage>
                                     </S.PopBrowseButtons.btn_edit_group>
 
                                     <S.PopBrowseButtons.btn_close>
@@ -296,6 +294,8 @@ function PopBrowse() {
                                             Закрыть
                                         </Link>
                                     </S.PopBrowseButtons.btn_close>
+
+                                    <ErrorMessage>{error}</ErrorMessage>
                                 </S.PopBrowseButtons.btn_browse>
                             )}
                         </S.PopBrowse.content>

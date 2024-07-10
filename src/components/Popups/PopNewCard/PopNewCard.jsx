@@ -8,11 +8,12 @@ import { kanbanApi } from '../../../api'
 import { ErrorMessage } from '../../../Common.styled'
 import { useUserContext } from '../../../contexts/User/useUserContext'
 import { useNavigate } from 'react-router-dom'
+import { inputErrorHandler } from '../../../lib/helpers'
 
 function PopNewCard() {
+    const navigate = useNavigate()
     const { getToken } = useUserContext()
     const [error, setError] = useState(null)
-    const navigate = useNavigate()
     const [newCard, setNewCard] = useState({
         title: '',
         topic: '',
@@ -28,14 +29,10 @@ function PopNewCard() {
     async function onTaskCreate(event) {
         try {
             event.preventDefault()
+            inputErrorHandler.newTask({ task: newCard })
 
-            if (
-                !newCard.title.trim() ||
-                !newCard.topic.trim() ||
-                !newCard.description.trim() ||
-                !newCard.date
-            ) {
-                throw new Error('Некорректный ввод/Заполните все поля')
+            if (error) {
+                setError(null)
             }
 
             await kanbanApi
@@ -124,10 +121,11 @@ function PopNewCard() {
                                 </S.CategoriesTopics>
                             </S.Categories>
 
-                            <ErrorMessage>{error}</ErrorMessage>
                             <S.FormNewCreateBtn onClick={onTaskCreate}>
                                 Создать задачу
                             </S.FormNewCreateBtn>
+
+                            <ErrorMessage>{error}</ErrorMessage>
                         </S.PopNewCardContent>
                     </S.PopNewCardBlock>
                 </S.PopNewCardContainer>

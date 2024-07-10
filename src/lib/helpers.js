@@ -15,3 +15,40 @@ export const userFromLs = {
         window.localStorage.removeItem('user')
     },
 }
+
+export const inputErrorHandler = {
+    newTask: function handler({ task }) {
+        if (
+            !task.title.trim() ||
+            !task.topic.trim() ||
+            !task.description.trim() ||
+            !task.date
+        ) {
+            throw new Error('Заполните все данные и повторите попытку')
+        }
+    },
+
+    editTask: function handler({ task }) {
+        if (
+            !task.title.trim() ||
+            !task.topic.trim() ||
+            !task.status.trim() ||
+            !task.description.trim() ||
+            !task.date
+        ) {
+            throw new Error('Заполните все данные и повторите попытку')
+        }
+    },
+
+    authUser: function handler({ data }) {
+        if (!data.login.trim() || !data.password.trim()) {
+            throw new Error('Заполните все поля формы')
+        }
+    },
+
+    regUser: function handler({ data }) {
+        if (!data.name.trim() || !data.login.trim() || !data.password.trim()) {
+            throw new Error('Заполните все поля формы')
+        }
+    },
+}

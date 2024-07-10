@@ -3,34 +3,32 @@ import { routePaths } from '../../lib/routes'
 import { useState } from 'react'
 import { userApi } from '../../api'
 import { useUserContext } from '../../contexts/User/useUserContext'
+import { inputErrorHandler } from '../../lib/helpers'
 
 function Register() {
     const { signIn } = useUserContext()
-    const [authData, setAuthData] = useState({
-        login: '',
+    const [error, setError] = useState(null)
+    const [regData, setRegData] = useState({
         name: '',
+        login: '',
         password: '',
     })
-    const [error, setError] = useState(null)
 
     function onChange(event) {
         const { name, value } = event.target
-        setAuthData({ ...authData, [name]: value })
+        setRegData({ ...regData, [name]: value })
     }
 
     async function onSubmit(event) {
         try {
             event.preventDefault()
+            inputErrorHandler.regUser({ data: regData })
 
-            if (
-                !authData.login.trim() ||
-                !authData.name.trim() ||
-                !authData.password.trim()
-            ) {
-                throw new Error('Некорректный ввод')
+            if (error) {
+                setError(null)
             }
 
-            await userApi.userReg(authData).then(signIn)
+            await userApi.userReg(regData).then(signIn)
         } catch (error) {
             setError(error.message)
         }
@@ -51,8 +49,9 @@ function Register() {
                                 name="name"
                                 id="first-name"
                                 placeholder="Имя"
-                                value={authData.name}
+                                value={regData.name}
                                 onChange={onChange}
+                                $error={error}
                             />
 
                             <S.ModalRegInput
@@ -60,8 +59,9 @@ function Register() {
                                 name="login"
                                 id="loginReg"
                                 placeholder="Эл. почта"
-                                value={authData.login}
+                                value={regData.login}
                                 onChange={onChange}
+                                $error={error}
                             />
 
                             <S.ModalRegInput
@@ -69,12 +69,13 @@ function Register() {
                                 name="password"
                                 id="passwordFirst"
                                 placeholder="Пароль"
-                                value={authData.password}
+                                value={regData.password}
                                 onChange={onChange}
+                                $error={error}
                             />
 
                             <S.ErrorMessage>{error}</S.ErrorMessage>
-                            <S.ModalBtn onClick={onSubmit}>
+                            <S.ModalBtn onClick={onSubmit} $error={error}>
                                 Зарегистрироваться
                             </S.ModalBtn>
 

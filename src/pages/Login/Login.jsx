@@ -3,11 +3,12 @@ import { useState } from 'react'
 import { routePaths } from '../../lib/routes'
 import { userApi } from '../../api'
 import { useUserContext } from '../../contexts/User/useUserContext'
+import { inputErrorHandler } from '../../lib/helpers'
 
 function Login() {
     const { signIn } = useUserContext()
-    const [authData, setAuthData] = useState({ login: '', password: '' })
     const [error, setError] = useState(null)
+    const [authData, setAuthData] = useState({ login: '', password: '' })
 
     function onChange(event) {
         const { name, value } = event.target
@@ -17,9 +18,10 @@ function Login() {
     async function onSubmit(event) {
         try {
             event.preventDefault()
+            inputErrorHandler.authUser({ data: authData })
 
-            if (!authData.login.trim() || !authData.password.trim()) {
-                throw new Error('Некорректный ввод')
+            if (error) {
+                setError(null)
             }
 
             await userApi.userAuth(authData).then(signIn)
@@ -45,6 +47,7 @@ function Login() {
                                 placeholder="Эл. почта"
                                 value={authData.login}
                                 onChange={onChange}
+                                $error={error}
                             />
 
                             <S.ModalInput
@@ -54,10 +57,13 @@ function Login() {
                                 placeholder="Пароль"
                                 value={authData.password}
                                 onChange={onChange}
+                                $error={error}
                             />
 
                             <S.ErrorMessage>{error}</S.ErrorMessage>
-                            <S.ModalBtn onClick={onSubmit}>Войти</S.ModalBtn>
+                            <S.ModalBtn onClick={onSubmit} $error={error}>
+                                Войти
+                            </S.ModalBtn>
 
                             <S.ModalFormGroup>
                                 <p>Нужно зарегистрироваться?</p>
