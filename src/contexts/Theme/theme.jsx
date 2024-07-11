@@ -3,6 +3,8 @@ import { darkTheme, lightTheme } from '../../lib/theme'
 import { ThemeProvider } from 'styled-components'
 
 export const ThemeContext = createContext(null)
+const logo = import.meta.env.BASE_URL + '/images/logo.png'
+const logoDark = import.meta.env.BASE_URL + '/images/logo_dark.png'
 
 export const UseThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light')
@@ -14,7 +16,7 @@ export const UseThemeProvider = ({ children }) => {
     }
 
     function toggleLogoPath() {
-        return theme === 'light' ? '/images/logo.png' : '/images/logo_dark.png'
+        return theme === 'light' ? logo : logoDark
     }
 
     return (
